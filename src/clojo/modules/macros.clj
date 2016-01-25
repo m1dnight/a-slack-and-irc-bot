@@ -25,6 +25,7 @@
 (defmacro defstorage
   [tablename & fields]
   `(defn ~'init-storage []
+     (println "Creating storage" ~tablename ~@fields)
      (db/create-table ~tablename ~@fields)))
 
 

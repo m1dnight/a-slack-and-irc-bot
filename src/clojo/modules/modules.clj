@@ -20,13 +20,15 @@
   "Takes the instance and the string representation of a module. Loads the
   module and attaches it to the instance."
   [instance name]
-  (log/debug "Loading plugin" name "for" (:name instance))
+  (log/debug "Loading plugin" name "for" (:name @instance))
   (let [fullns (symbol (str "clojo.modules.plugins." name))
         modfn  (symbol (str "clojo.modules.plugins." name "/load-module"))
         storfn (symbol (str "clojo.modules.plugins." name "/init-storage"))]
+    (println modfn storfn)
     (require fullns :reload)
     ;; Execute optional storage intialisation.
     (when (resolve storfn)
+      (println "Storage creation")
       ((resolve storfn)))
     ;; Execute the macro function in the module by giving it the servers.
     (when (resolve modfn)
@@ -40,6 +42,7 @@
   [instance name rate module]
   (let [handler  (:handler module)
         kind     (:kind module) ;; :command or a :hook
+        _ (println kind)
         ;; Each module is either a hook or a command.
         ;; A command has  a :command defined (e.g., "youtube")
         ;; and a hook has a hook defined (e.g., :PRIVMSG).
@@ -55,7 +58,8 @@
             (fn [instance]
               (update-in instance
                          [kind submap]
-                         conj {:name name :f handler :rate rate}))))))
+                         conj {:name name :f handler :rate rate}))))
+    (println @instance)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -116,10 +120,33 @@
       ;; Only if the ratelimit allows us to execute the module, execute it.
       (when-not (limited? instance name rl)
         (try
-          (log/debug "Applying command" name "Limited: " (limited? instance name rl))
-          (println "args" args)
           (apply handler args)
           (catch Exception e
             (log/error "Command handler " handler " threw an exception: " (.getMessage e) "\n" (.getStacktrace e))))
+        ;; Reset the activity for the module.
+        (update-last-activity instance name)))))
+
+
+(defn apply-listeners
+  "Given a kind and arguments, this function will take out all the
+  handlers in the hooks map that are bound to the keyword. It will
+  then apply each handler to the given arguments. In case of an
+  exception the handler an error message is printed to stdout."
+  [instance kind & args]
+  (println "Applying listeners")
+  (let [limits   (ratelimit-map instance)
+        _ (println "limits" limits)
+        hooks    (:hook @instance)
+        _ (println "hooks" hooks)
+        handlers (kind hooks)
+        _ (println "handlers" handlers)]
+    (doseq [{handler :f name :name rl :rate} handlers]
+      (log/debug "Applying listener" name "Limited: " (limited? instance name rl))
+      ;; Only if the ratelimit allows us to execute the module, execute it.
+      (when-not (limited? instance name rl)
+        (try
+          (apply handler args)
+          (catch Exception e
+            (log/error "Hook " handler " threw an exception: " (.getMessage e))))
         ;; Reset the activity for the module.
         (update-last-activity instance name)))))

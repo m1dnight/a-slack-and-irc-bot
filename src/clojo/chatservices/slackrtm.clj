@@ -68,16 +68,17 @@
   [cfg]
   (ref
    {
-    :type      :slack-rtm
-    :name      (:name cfg)
-    :token     (:token cfg)
-    :incoming  (as/chan)
-    :outgoing  (as/chan)
-    :heatbeat  (as/chan)
-    :connected false
-    :socket    nil
-    :id-gen    0
-    :send-fn  send-message
+    :type        :slack-rtm
+    :name        (:name cfg)
+    :token       (:token cfg)
+    :incoming    (as/chan)
+    :outgoing    (as/chan)
+    :heatbeat    (as/chan)
+    :connected   false
+    :socket      nil
+    :id-gen      0
+    :send-fn     send-message
+    :ratelimits  {}
     }))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -157,7 +158,7 @@
   be done."
   [instance]
   (when-let [msg (cs/parse-string
-                 (u/read-with-timeout (:incoming @instance) 5000) true)]
+                  (u/read-with-timeout (:incoming @instance) 5000) true)]
     (log/trace (:name @instance) "IN :" msg)
     (cond
       ;; Passing to generic dispatch means translating the message to a generic format!
@@ -219,7 +220,9 @@
    :channel (:channel m)
    :userid  (:user m)
    :nick    (:user m)
-   :server  (:team m)})
+   :server  (:team m)
+   :command :PRIVMSG ;; this is needed to trigger handlers for all public messages.
+   })
 
 
 (defn encode-message

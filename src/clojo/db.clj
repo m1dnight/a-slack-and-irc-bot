@@ -4,26 +4,7 @@
             [clojure.tools.logging :as  log]
             [clojo.utils           :as    u]))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Configuring postgres:                                                           ;;
-;; ---------------------                                                           ;;
-;; sudo apt-get update                                                             ;;
-;; sudo -i -u postgres                                                             ;;
-;; sudo apt-get install postgresql postgresql-contrib                              ;;
-;; createuser --interactive                                                        ;;
-;; --> Create a user with the username that you will run the bot as (christophe)   ;;
-;; createdb clojo                                                                ;;
-;; psql -d clojo (as user that runs Clojo to manage db)                        ;;
-;; sudo -i -u postgres                                                             ;;
-;; psql -U postgres template1 -c "alter user christophe with password 'pAssword!'" ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-;;;==============================================================================
-;;; Inner functions
-;;;==============================================================================
-
+            
 (defn read-db-config
   "Reads in the configuration file from the conf/db.edn file. Returns
   a map that can be used with sql."

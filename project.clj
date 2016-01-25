@@ -5,6 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure       "1.7.0"]
                  [org.clojure/core.async  "0.2.374"]
+                 [org.clojure/algo.monads   "0.1.5"]
                  ;; Logging macros -> https://github.com/clojure/tools.logging
                  [org.clojure/tools.logging "0.3.1"]
                  [log4j/log4j              "1.2.17" :exclusions [javax.mail/mail
@@ -24,7 +25,8 @@
                  [org.xerial/sqlite-jdbc    "3.7.2"]                 
                  [org.clojure/java.jdbc     "0.3.6"]
                  [clojure-tools             "1.1.3"]
-                 [java-jdbc/dsl             "0.1.0"]]
+                 [java-jdbc/dsl             "0.1.0"]
+                 [korma                     "0.4.0"]]
   
   :main ^:skip-aot clojo.core
   :target-path "target/%s"

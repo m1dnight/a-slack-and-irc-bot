@@ -39,6 +39,7 @@
                     (body))
                   (log/info label " loop exiting!")))]
     (.start thread)
+    (println "Daemon thread?" (.isDaemon thread))
     thread))
 
 

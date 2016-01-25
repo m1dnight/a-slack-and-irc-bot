@@ -44,10 +44,14 @@
   Finally, all hooks are executed as well according to the type of
   this message. (e.g., privmsg)."
   [instance msg]
-  (let [command (parse-command (:message msg))]
-    ;; Trigger the command if the case.
+  (let [command (parse-command (:message msg))
+        msgtype (:command msg)]
+    ;; Trigger the command if the case. (I.e., modules that are triggered with a
+    ;; command).
     (when-let [{t :trigger a :args} command]
-      (mod/apply-triggers instance t instance a msg)))) 
+      (mod/apply-triggers instance t instance a msg))
+    ;; Activate all listeners (i.e., plugins that just listen to all messages).
+    (mod/apply-listeners instance msgtype instance msg))) 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -77,4 +81,4 @@
                              (mod/load-module instance module))))
                        (:instances clojo-cfg))]
     (println instances)
-    (Thread/sleep 1000000)))
+    (Thread/sleep 1000000000)))

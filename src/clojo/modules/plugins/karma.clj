@@ -1,10 +1,10 @@
-(ns clojbot.modules.karma
+(ns clojo.modules.plugins.karma
   (:use     [clojure.algo.monads]
             [korma.core         ]
             [korma.db           ])
-  (:require [clojbot.botcore  :as core]
-            [clojbot.db       :as db  ]
-            [clojbot.commands :as cmd ]))
+  (:require [clojo.modules.macros  :as   m]
+            [clojo.modules.modules :as mod]
+            [clojo.db              :as  db]))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Database Entity ;;
@@ -19,57 +19,57 @@
 
 (defn get-user-data
   "Returns the entry for a user if it is being tracked. Nil otherwise."
-  [username]
-  (first (select karma (where {:nick username}))))
+  [username channel]
+  (first (select karma (where {:nick username :context channel}))))
 
 
 (defn track-user
   "Inserts a new user into the database with karma 0."
-  [username]
-  (insert karma (values {:nick username :karma 0})))
+  [username channel]
+  (insert karma (values {:nick username :karma 0 :context channel})))
 
 
 (defn update-karma
   "Updates the karma in the database with the given delta."
-  [username delta]
+  [username delta channel]
   ;; Track the user if not yet tracked.
-  (when-not (get-user-data username)
-    (track-user username))
+  (when-not (get-user-data username channel)
+    (track-user username channel))
 
-  (let [data    (get-user-data username)
+  (let [data    (get-user-data username channel)
         updated (+ (:karma data) delta)]
     (update karma 
             (set-fields {:karma updated})
-            (where {:nick username}))))
+            (where {:nick username :context channel}))))
 
 
 (defn get-karma
   "Gets the karma value for the given username, nil if the user is not found."
-  [username]
-  (when-let [data (get-user-data username)]
+  [username channel]
+  (when-let [data (get-user-data username channel)]
     (:karma data)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; MODULE DEFINITION ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 
-(core/defstorage
+(m/defstorage
   :karma [:nick :text] [:karma :int] [:context :text])
 
 
-(core/defmodule
+(m/defmodule
   :karma
   0
-  (core/defcommand
+  (m/defcommand
     "karma"
-    (fn [srv args msg]
-      (if-let [karma (get-karma args)]
-        (cmd/send-message srv (:channel msg) (str "↪ " karma))
-        (cmd/send-message srv (:channel msg) "I have no information about that user."))))
-  (core/defhook
+    (fn [instance args msg]
+      (if-let [karma (get-karma args (:channel msg))]
+        (m/reply instance msg (str "↪ " karma))
+        (m/reply instance msg "I have no information about that user."))))
+  (m/defhook
     :PRIVMSG
-    (fn [srv msg]
+    (fn [instance msg]
       (let [incd (map second (re-seq #"(\w+)\+\+" (:message msg)))
             decd (map second (re-seq #"(\w+)\-\-" (:message msg)))]
-        (doall (map #(update-karma % -1) decd))
-        (doall (map #(update-karma % +1) incd))))))
+        (doall (map #(update-karma % -1 (:channel msg)) decd))
+        (doall (map #(update-karma % +1 (:channel msg)) incd))))))
