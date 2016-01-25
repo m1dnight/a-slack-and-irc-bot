@@ -10,12 +10,22 @@
                  [log4j/log4j              "1.2.17" :exclusions [javax.mail/mail
                                                                   javax.jms/jms
                                                                   com.sun.jmdk/jmxtools
-                                                                  com.sun.jmx/jmxri]]
+                                                                 com.sun.jmx/jmxri]]
+                 ;; Can't miss a good Date/Time library!
+                 [clj-time                  "0.9.0"]
                  ;; Http/Websockets
                  [clj-http                  "2.0.1"]
                  [stylefruits/gniazdo       "0.4.1"]
                  ;; Chesire - Encoding/decoding json etc.
-                 [cheshire                  "5.5.0"]]
+                 [cheshire                  "5.5.0"]
+                 ;; Working with URLs - https://github.com/cemerick/url
+                 [com.cemerick/url          "0.1.1"]
+                 ;; Database dependencies.
+                 [org.xerial/sqlite-jdbc    "3.7.2"]                 
+                 [org.clojure/java.jdbc     "0.3.6"]
+                 [clojure-tools             "1.1.3"]
+                 [java-jdbc/dsl             "0.1.0"]]
+  
   :main ^:skip-aot clojo.core
   :target-path "target/%s"
   :profiles  {:dev  

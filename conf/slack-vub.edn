@@ -2,6 +2,6 @@
  :type  :slack-rtm
  :name  "compwe-slack"
  :token "token"
- :modules []
+ :modules ["google"]
  
  }

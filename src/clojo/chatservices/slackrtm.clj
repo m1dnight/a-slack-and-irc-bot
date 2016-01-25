@@ -44,7 +44,8 @@
 (defn init-connection
   "Takes a bot instance and makes the actual connection to the Slack instance."
   [instance]
-  (connect instance))
+  (connect instance)
+  instance)
 
 
 
