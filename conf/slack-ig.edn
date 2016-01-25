@@ -1,0 +1,5 @@
+{
+ :type  :slack-rtm
+ :name  "infogroep-slack"
+ :token "foobar"
+ }

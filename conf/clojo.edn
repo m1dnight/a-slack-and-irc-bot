@@ -1,0 +1,3 @@
+{
+ :instances ["slack-vub.edn"] ;; Filenames of all the bot config files that you wish to load.
+ }

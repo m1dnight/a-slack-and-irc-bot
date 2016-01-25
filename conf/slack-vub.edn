@@ -1,0 +1,7 @@
+{
+ :type  :slack-rtm
+ :name  "compwe-slack"
+ :token "token"
+ :modules []
+ 
+ }
