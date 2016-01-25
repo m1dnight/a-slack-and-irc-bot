@@ -24,11 +24,9 @@
   (let [fullns (symbol (str "clojo.modules.plugins." name))
         modfn  (symbol (str "clojo.modules.plugins." name "/load-module"))
         storfn (symbol (str "clojo.modules.plugins." name "/init-storage"))]
-    (println modfn storfn)
     (require fullns :reload)
     ;; Execute optional storage intialisation.
     (when (resolve storfn)
-      (println "Storage creation")
       ((resolve storfn)))
     ;; Execute the macro function in the module by giving it the servers.
     (when (resolve modfn)
@@ -42,7 +40,6 @@
   [instance name rate module]
   (let [handler  (:handler module)
         kind     (:kind module) ;; :command or a :hook
-        _ (println kind)
         ;; Each module is either a hook or a command.
         ;; A command has  a :command defined (e.g., "youtube")
         ;; and a hook has a hook defined (e.g., :PRIVMSG).
@@ -58,8 +55,7 @@
             (fn [instance]
               (update-in instance
                          [kind submap]
-                         conj {:name name :f handler :rate rate}))))
-    (println @instance)))
+                         conj {:name name :f handler :rate rate}))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -133,13 +129,9 @@
   then apply each handler to the given arguments. In case of an
   exception the handler an error message is printed to stdout."
   [instance kind & args]
-  (println "Applying listeners")
   (let [limits   (ratelimit-map instance)
-        _ (println "limits" limits)
         hooks    (:hook @instance)
-        _ (println "hooks" hooks)
-        handlers (kind hooks)
-        _ (println "handlers" handlers)]
+        handlers (kind hooks)]
     (doseq [{handler :f name :name rl :rate} handlers]
       (log/debug "Applying listener" name "Limited: " (limited? instance name rl))
       ;; Only if the ratelimit allows us to execute the module, execute it.

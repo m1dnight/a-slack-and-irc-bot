@@ -49,8 +49,6 @@
     (fn [instance args msg]
       (log/debug "Searching Google for " args)
       (let [results (search args)]
-        (println "results:" results)
-        (println "msg:" msg)
         (if results
           (m/reply instance msg (str (:title results) " :: " (:url results)))
           (m/reply instance msg "No results found!"))))))

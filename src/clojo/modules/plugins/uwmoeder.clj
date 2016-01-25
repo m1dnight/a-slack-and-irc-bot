@@ -1,11 +1,10 @@
-(ns clojbot.modules.uwmoeder
+(ns clojo.modules.plugins.uwmoeder
   (:use     [clojure.algo.monads]
             [korma.core         ]
             [korma.db           ])
-  (:require [clojbot.botcore  :as core]
-            [clojbot.db       :as db  ]
-            [clojbot.commands :as cmd ]
-            [clojbot.utils    :as u   ]))
+  (:require [clojo.modules.macros  :as   m]
+            [clojo.modules.modules :as mod]
+            [clojo.utils           :as   u]))
 
 
 (defn change-to-insult
@@ -21,12 +20,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; MODULE DEFINITION ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
-(core/defmodule
+(m/defmodule
   :insult
-  14400000 ;; every 6 hours tops
-  (core/defhook
+                                        ;7200000 ;; every 3 hours tops
+  0
+  (m/defhook
     :PRIVMSG
-    (fn [srv msg]
+    (fn [instance msg]
       (when-let [insult (change-to-insult (:message msg))]
         (when (u/rand-bool)
-          (cmd/send-message srv (:channel msg) insult))))))
+          (m/reply instance msg insult))))))

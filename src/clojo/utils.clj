@@ -39,7 +39,6 @@
                     (body))
                   (log/info label " loop exiting!")))]
     (.start thread)
-    (println "Daemon thread?" (.isDaemon thread))
     thread))
 
 
@@ -55,3 +54,9 @@
                    nil))))]
     ;; If res is nil it means that we waited timeout for a message.
     res))
+
+
+(defn rand-bool
+  "Generates a random boolean value."
+  []
+  (= 0 (rand-int 2)))
