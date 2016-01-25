@@ -37,4 +37,9 @@
          (if (= :storage knd#)
            (body#)
            (mod/add-handler instance# ~name ~rate cmd#))))))
+
+
+(defmacro reply
+  [instance msg text]
+  `((:send-fn (deref ~instance)) ~instance (:channel ~msg) ~text))
                                  

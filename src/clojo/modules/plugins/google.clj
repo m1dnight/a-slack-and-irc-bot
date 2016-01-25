@@ -52,5 +52,5 @@
         (println "results:" results)
         (println "msg:" msg)
         (if results
-          ((:send-fn @instance) instance (:channel msg) (str (:title results) " :: " (:url results)))
-          ((:send-fn @instance) instance (:channel msg) "No results found!"))))))
+          (m/reply instance msg (str (:title results) " :: " (:url results)))
+          (m/reply instance msg "No results found!"))))))
