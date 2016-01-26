@@ -133,7 +133,7 @@
         hooks    (:hook @instance)
         handlers (kind hooks)]
     (doseq [{handler :f name :name rl :rate} handlers]
-      (log/debug "Applying listener" name "Limited: " (limited? instance name rl))
+      (log/trace "Applying listener" name "Limited: " (limited? instance name rl))
       ;; Only if the ratelimit allows us to execute the module, execute it.
       (when-not (limited? instance name rl)
         (try

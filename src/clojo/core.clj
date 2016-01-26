@@ -33,6 +33,12 @@
     (catch NullPointerException e nil)))
 
 
+(defn await-exits
+  "Given a list of instances, will wait for all of them to shut down."
+  [instances]
+  (Thread/sleep 1000000))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; MESSAGE HANDLING ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -51,7 +57,7 @@
     (when-let [{t :trigger a :args} command]
       (mod/apply-triggers instance t instance a msg))
     ;; Activate all listeners (i.e., plugins that just listen to all messages).
-    (mod/apply-listeners instance msgtype instance msg))) 
+    (mod/apply-listeners instance msgtype instance msg)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -64,21 +70,23 @@
   specified there."
   [& args]
   (let [clojo-cfg (u/read-config-sysprop "clojo.edn")
-        instances (map (fn [instance]
-                         (let [instance-cfg (u/read-config-sysprop instance)
-                               instance     (case (:type instance-cfg)
-                                              ;; Create a Slack RTM instance.
-                                              :slack-rtm
-                                              (do (log/debug "Connecting to slack instance" (:name instance-cfg))
-                                                  (slack/init-connection (slack/create-instance instance-cfg dispatcher)))
-                                              ;; Create a plain old IRC connection.
-                                              :irc
-                                              (log/debug "Connecting IRC")
-                                              ;; Not defined.
-                                              (log/error "Unknown instance!"))]
-                           ;; Load all modules defined in the instance.
-                           (doseq [module (:modules instance-cfg)]
-                             (mod/load-module instance module))))
-                       (:instances clojo-cfg))]
-    (println instances)
-    (Thread/sleep 1000000000)))
+        instances (doall
+                   (map (fn [instance]
+                          (let [instance-cfg (u/read-config-sysprop instance)
+                                instance     (case (:type instance-cfg)
+                                               ;; Create a Slack RTM instance.
+                                               :slack-rtm
+                                               (do (log/debug "Connecting to slack instance" (:name instance-cfg))
+                                                   (slack/init-connection (slack/create-instance instance-cfg dispatcher)))
+                                               ;; Create a plain old IRC connection.
+                                               :irc
+                                               (log/debug "Connecting IRC")
+                                               ;; Not defined.
+                                               (log/error "Unknown instance!"))]
+                            ;; Load all modules defined in the instance.
+                            (doseq [module (:modules instance-cfg)]
+                              (mod/load-module instance module))))
+                        (:instances clojo-cfg)))]
+    ;; Finally, wait for all the connections to die.
+    ;; *This is blocking!*
+    (await-exits instances)))
