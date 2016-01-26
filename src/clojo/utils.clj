@@ -84,3 +84,10 @@
               [(keyword k) v]
               [k v]))]
     (clojure.walk/postwalk (fn [x] (if (map? x) (into {} (map f x)) x)) m)))
+
+
+(defn replace-several
+  "Replaces serveral chars with their replacement in a string."
+  [content & replacements]
+      (let [replacement-list (partition 2 replacements)]
+        (reduce #(apply clojure.string/replace %1 %2) content replacement-list)))

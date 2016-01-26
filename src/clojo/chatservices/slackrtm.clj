@@ -303,10 +303,15 @@
        (contains? msg :text)))
 
 
+(defn clean-slack-msg
+  [msg]
+  (clojure.string/replace msg #"[\u201c\u201d]" "\""))
+
+
 (defn decode-message
   "Given a Slack message, returns a hashmap with some uniform names."
   [m]
-  {:message (:text m)
+  {:message (clean-slack-msg (:text m))
    :channel (:channel m)
    :userid  (:user m)
    :nick    (:user m)
