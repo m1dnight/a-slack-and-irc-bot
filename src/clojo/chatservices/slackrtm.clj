@@ -242,7 +242,7 @@
   to the slack server."
   [instance]
   (when-let [msg (u/read-with-timeout (:outgoing @instance) 5000)]
-    (log/debug "Putting message on socket:"  (cs/generate-string msg))
+    (log/trace "Putting message on socket:"  (cs/generate-string msg))
     (ws/send-msg (:socket @instance) (cs/generate-string msg))))
 
 

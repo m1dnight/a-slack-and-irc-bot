@@ -4,7 +4,8 @@
             [korma.db           ])
   (:require [clojo.modules.macros  :as   m]
             [clojo.modules.modules :as mod]
-            [clojo.db              :as  db]))
+            [clojo.db              :as  db]
+            [clojure.tools.logging :as log]))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Database Entity ;;
@@ -50,7 +51,7 @@
     (:karma data)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;
-;; MODULE DEFINITION ;;
+;; MODULE DEFINITION ;;`
 ;;;;;;;;;;;;;;;;;;;;;;;
 
 (m/defstorage
