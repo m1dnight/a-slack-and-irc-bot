@@ -6,12 +6,13 @@
   :dependencies [[org.clojure/clojure       "1.7.0"]
                  [org.clojure/core.async  "0.2.374"]
                  [org.clojure/algo.monads   "0.1.5"]
+                 [org.clojure/data.json     "0.2.6"]
                  ;; Logging macros -> https://github.com/clojure/tools.logging
                  [org.clojure/tools.logging "0.3.1"]
                  [log4j/log4j              "1.2.17" :exclusions [javax.mail/mail
                                                                   javax.jms/jms
                                                                   com.sun.jmdk/jmxtools
-                                                                 com.sun.jmx/jmxri]]
+                                                                  com.sun.jmx/jmxri]]
                  ;; Can't miss a good Date/Time library!
                  [clj-time                  "0.9.0"]
                  ;; Http/Websockets

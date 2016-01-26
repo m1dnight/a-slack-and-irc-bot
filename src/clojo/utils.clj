@@ -74,3 +74,13 @@
                    nil))))]
     ;; If res is nil it means that we waited timeout for a message.
     res))
+
+
+(defn keywordize-keys
+  "Recursively transforms all map keys from strings to keywords."
+  [m]
+  (let [f (fn [[k v]]
+            (if (string? k)
+              [(keyword k) v]
+              [k v]))]
+    (clojure.walk/postwalk (fn [x] (if (map? x) (into {} (map f x)) x)) m)))
