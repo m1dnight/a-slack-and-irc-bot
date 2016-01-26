@@ -134,6 +134,7 @@
    (let [socket (:socket @instance)]
      (try
        (ws/close socket)
+       ;; If the socket is already closed, we don't care.
        (catch Exception e nil)))))
 
 
@@ -192,10 +193,11 @@
     (Thread/sleep 5000)
     ;; If no pong is received, try a reconnect and keep trying until it
     ;; succeeds.
-    (do (reconnect-server instance)
-        (while (not (:connected @instance))
-          (Thread/sleep 2000) ;; Attempt connect every 2 seconds.
-          (reconnect-server instance)))))
+    (dosync
+     (reconnect-server instance)
+     (while (not (:connected @instance))
+       (Thread/sleep 2000) ;; Attempt connect every 2 seconds.
+       (reconnect-server instance)))))
 
 
 (defn monitor-server
