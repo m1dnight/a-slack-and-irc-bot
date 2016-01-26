@@ -27,9 +27,9 @@
   be empty."
   [msg]
   (try
-    (when-let [regex (re-matches #",(\w+)\s?(.+?)?([ \t]+)?" msg)]
-      {:trigger (keyword (nth regex 1))
-       :args    (nth regex 2)})
+    (when-let [regex (re-matches #"(,|~)(\w+)\s?(.+?)?([ \t]+)?" msg)]
+      {:trigger (keyword (nth regex 2))
+       :args    (nth regex 3)})
     (catch NullPointerException e nil)))
 
 
