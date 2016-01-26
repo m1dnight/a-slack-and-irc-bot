@@ -306,7 +306,7 @@
 (defn clean-slack-msg
   [msg]
   (let [quotes (clojure.string/replace msg #"[\u201c\u201d]" "\"")
-        newlines (clojure.string/replace quotes #"\n" " ")]
+        newlines (clojure.string/replace quotes #"\n\t\r" " ")]
      newlines))
 
 
