@@ -26,7 +26,10 @@
                  [org.clojure/java.jdbc     "0.3.6"]
                  [clojure-tools             "1.1.3"]
                  [java-jdbc/dsl             "0.1.0"]
-                 [korma                     "0.4.0"]]
+                 [korma                     "0.4.0"]
+                 ;; Clojurure evaluation
+                 [clojail                   "1.0.6"]
+                 ]
   
   :main ^:skip-aot clojo.core
   :target-path "target/%s"

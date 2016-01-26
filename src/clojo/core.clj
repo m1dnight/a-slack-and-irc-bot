@@ -36,7 +36,7 @@
 (defn await-exits
   "Given a list of instances, will wait for all of them to shut down."
   [instances]
-  (Thread/sleep 1000000))
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

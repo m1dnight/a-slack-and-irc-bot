@@ -36,6 +36,7 @@
 ;;; PUBLIC FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 (defn create-instance
   "Creates an instance for a slack connection based on a config."
   [cfg-map dispatcher]
@@ -50,7 +51,6 @@
   (connect instance)
   (monitor-server instance)
   instance)
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -233,7 +233,7 @@
       ;; Passing to generic dispatch means translating the message to a generic format!
       (text-msg? msg)
       (let [parsed (decode-message msg)]
-        (log/debug (:name @instance) "Dispatching:" parsed)
+        (log/trace (:name @instance) "Dispatching:" parsed)
         ((:dispatcher @instance) instance parsed)))))
 
 
