@@ -1,3 +1,4 @@
+
 (ns clojo.modules.plugins.catfact
   (:use     [clojure.algo.monads]
             [korma.core         ]

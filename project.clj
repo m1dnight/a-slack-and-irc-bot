@@ -30,6 +30,8 @@
                  [korma                     "0.4.0"]
                  ;; Clojurure evaluation
                  [clojail                   "1.0.6"]
+                 ;; Web scraping
+                 [clj-soup/clojure-soup     "0.1.3"]
                  ]
   
   :main ^:skip-aot clojo.core
