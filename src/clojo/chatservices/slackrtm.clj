@@ -29,6 +29,7 @@
 (declare encode-message)
 (declare monitor-server)
 (declare send-message-raw)
+(declare edited-msg?)
 
 (def ^:private socket-url "https://slack.com/api/rtm.start")
 
@@ -231,7 +232,7 @@
       (pong? msg)
       (as/>!! (:heartbeat @instance) msg)
       ;; Passing to generic dispatch means translating the message to a generic format!
-      (text-msg? msg)
+      (or (edited-msg? msg) (text-msg? msg))
       (let [parsed (decode-message msg)]
         (log/trace (:name @instance) "Dispatching:" parsed)
         ((:dispatcher @instance) instance parsed)))))
@@ -303,6 +304,14 @@
        (contains? msg :text)))
 
 
+(defn edited-msg?
+  "Given a raw input map checks if the message is an edit of a previous
+  message."
+  [msg]
+  (and (= "message" (:type msg))
+       (= "message_changed" (:subtype msg))))
+
+
 (defn clean-slack-msg
   [msg]
   (let [quotes (clojure.string/replace msg #"[\u201c\u201d]" "\"")
@@ -313,13 +322,23 @@
 (defn decode-message
   "Given a Slack message, returns a hashmap with some uniform names."
   [m]
-  {:message (clean-slack-msg (:text m))
-   :channel (:channel m)
-   :userid  (:user m)
-   :nick    (:user m)
-   :server  (:team m)
-   :command :PRIVMSG ;; this is needed to trigger handlers for all public messages.
-   })
+  (cond
+    (edited-msg? m)
+    {:message (clean-slack-msg (:text (:message m)))
+     :channel (:channel m)
+     :userid  (:user (:message m))
+     :nick    (:user (:message m))
+     :server  nil ;; Team variable is not set in edited message.
+     :command :PRIVMSG ;; this is needed to trigger handlers for all public messages.
+     }
+    (text-msg? m)
+    {:message (clean-slack-msg (:text m))
+     :channel (:channel m)
+     :userid  (:user m)
+     :nick    (:user m)
+     :server  (:team m)
+     :command :PRIVMSG ;; this is needed to trigger handlers for all public messages.
+     }))
 
 
 (defn encode-message
