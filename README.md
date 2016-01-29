@@ -62,7 +62,7 @@ able to run it with your own config.
 
 In the latter case you can just run the `jar` file created by `lein
 uberjar`. When you run the jar you can pass the system properties to the java
-runtime and override the `project.clj` settings. 
+runtime and override the `project.clj` settings.
 
 ```
 CP=/path/to/config
@@ -73,7 +73,8 @@ java -Dconfig.path=$CP -jar $JAR
 ## Plugins
 
 The bot has a very basic but easy to use macro framework which allows you to
-easily write plugins. A short introduction on this is coming soon!
+easily write plugins. A short introduction can be found in `modules.md` in this
+repository.
 
 
 ## Contributing
