@@ -171,3 +171,4 @@ tramp
 .cask/
 # server auth directory
 /server/
+project.clj
