@@ -8,7 +8,8 @@
 ;; | |  | | (_) | (_| | |_| | |  __/\__ \
 ;; |_|  |_|\___/ \__,_|\__,_|_|\___||___/
 (ns clojo.modules.modules
-  (:require [clojure.tools.logging :as log]))
+  (:require [clojure.string        :as string]
+            [clojure.tools.logging :as log]))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -118,7 +119,7 @@
         (try
           (apply handler args)
           (catch Exception e
-            (log/error "Command handler " handler " threw an exception: " (.getMessage e) "\n" (.getStacktrace e))))
+            (log/error e "Command handler" handler "threw an exception:")))
         ;; Reset the activity for the module.
         (update-last-activity instance name)))))
 
@@ -139,6 +140,6 @@
         (try
           (apply handler args)
           (catch Exception e
-            (log/error "Hook " handler " threw an exception: " (.getMessage e))))
+            (log/error e "Hook" handler "threw an exception:")))
         ;; Reset the activity for the module.
         (update-last-activity instance name)))))

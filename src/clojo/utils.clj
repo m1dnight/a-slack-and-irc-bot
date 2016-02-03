@@ -62,20 +62,6 @@
   (= 0 (rand-int 2)))
 
 
-(defn read-with-timeout
-  "Reads a message from a channel with a timeout. Returns nil if the
-  timeout is exceeded."
-  [channel timeout]
-  (let [res (as/<!!
-             (as/go
-               (let [[res src] (as/alts! [channel (as/timeout timeout)])]
-                 (if (= channel src)
-                   res
-                   nil))))]
-    ;; If res is nil it means that we waited timeout for a message.
-    res))
-
-
 (defn keywordize-keys
   "Recursively transforms all map keys from strings to keywords."
   [m]
