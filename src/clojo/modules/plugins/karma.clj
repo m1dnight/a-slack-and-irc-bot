@@ -70,8 +70,8 @@
   (m/defhook
     :PRIVMSG
     (fn [instance msg]
-      (let [incd (map second (re-seq #"(\w+)\+\+" (:message msg)))
-            decd (map second (re-seq #"(\w+)\-\-" (:message msg)))]
+      (let [incd (map second (re-seq #"([\w-]+)\+\+" (:message msg)))
+            decd (map second (re-seq #"([\w-]+)\-\-" (:message msg)))]
         (doall (map #(update-karma % -1 (:channel msg)) decd))
         (doall (map #(update-karma % +1 (:channel msg)) incd))))))
 
