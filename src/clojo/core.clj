@@ -76,11 +76,11 @@
                                 instance     (case (:type instance-cfg)
                                                ;; Create a Slack RTM instance.
                                                :slack-rtm
-                                               (do (log/debug "Connecting to slack instance" (:name instance-cfg))
+                                               (do (log/info "Connecting to slack instance" (:name instance-cfg))
                                                    (slack/init-connection (slack/create-instance instance-cfg dispatcher)))
                                                ;; Create a plain old IRC connection.
                                                :irc
-                                               (log/debug "Connecting IRC")
+                                               (log/info "Connecting IRC")
                                                ;; Not defined.
                                                (log/error "Unknown instance!"))]
                             ;; Load all modules defined in the instance.

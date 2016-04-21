@@ -34,6 +34,5 @@
   (m/defcommand                                                                                
     "fact"                                                                                        
     (fn [instance args msg]
-      (println "executing")
       (when-let [fact (fact)]
         (m/reply instance msg fact)))))

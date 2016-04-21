@@ -21,7 +21,7 @@
   "Takes the instance and the string representation of a module. Loads the
   module and attaches it to the instance."
   [instance name]
-  (log/debug "Loading plugin" name "for" (:name @instance))
+  (log/info "Loading plugin" name "for" (:name @instance))
   (let [fullns (symbol (str "clojo.modules.plugins." name))
         modfn  (symbol (str "clojo.modules.plugins." name "/load-module"))
         storfn (symbol (str "clojo.modules.plugins." name "/init-storage"))]

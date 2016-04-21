@@ -261,7 +261,6 @@
   Slack! You will lose all control over your message. Once it is gone it is
   really gone."
   [instance channel message]
-  (println "Sending message" message)
   (send-message-raw instance
    (encode-message instance {:message message :channel channel})))
 
