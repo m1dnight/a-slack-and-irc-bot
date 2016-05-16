@@ -1,3 +1,7 @@
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
 
 (ns clojo.modules.plugins.catfact
   (:use     [clojure.algo.monads]
@@ -27,7 +31,7 @@
   [url]
   (try (:body (client/get url))
        (catch Exception e
-         (log/error "GET" url "failed" (.getMessage e))
+         (log/error "Catfact: GET" url "failed" (.getMessage e))
          nil)))
 
 (defn- extract-catfact

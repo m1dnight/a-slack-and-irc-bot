@@ -1,3 +1,8 @@
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.modules.plugins.google
   (:require [clojure.tools.logging :as    log]
             [cemerick.url          :as    url]

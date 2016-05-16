@@ -1,14 +1,8 @@
-;; Author : Christophe De Troyer
-;; Contact: <christophe.detroyer@gmail.com>
-;; Date   : 20.01.2016
-;; License: MIT
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  ____  _            _      ____ _____ __  __  ;;
-;; / ___|| | __ _  ___| | __ |  _ \_   _|  \/  | ;;
-;; \___ \| |/ _` |/ __| |/ / | |_) || | | |\/| | ;;
-;;  ___) | | (_| | (__|   <  |  _ < | | | |  | | ;;
-;; |____/|_|\__,_|\___|_|\_\ |_| \_\|_| |_|  |_| ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.chatservices.slackrtm
   (:require [clojure.tools.logging :as  log]
             [clojure.core.async    :as   as]
@@ -42,7 +36,8 @@
   "Creates an instance for a slack connection based on a config."
   [cfg-map dispatcher]
   (let [instance (from-config cfg-map)]
-    (dosync (alter instance #(assoc % :dispatcher dispatcher)))
+    (dosync
+     (alter instance #(assoc % :dispatcher dispatcher)))
     instance))
 
 
@@ -234,7 +229,7 @@
       ;; Passing to generic dispatch means translating the message to a generic format!
       (or (edited-msg? msg) (text-msg? msg))
       (let [parsed (decode-message msg)]
-        (log/trace (:name @instance) "Dispatching:" parsed)
+        (log/debug (:name @instance) "Dispatching:" parsed)
         ((:dispatcher @instance) instance parsed)))))
 
 

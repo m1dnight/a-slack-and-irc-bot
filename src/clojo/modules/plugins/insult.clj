@@ -1,3 +1,8 @@
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.modules.plugins.insult
   (:use     [clojure.algo.monads])
   (:require [clojure.tools.logging :as    log]

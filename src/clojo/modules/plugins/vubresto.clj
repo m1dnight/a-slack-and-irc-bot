@@ -1,3 +1,8 @@
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.modules.plugins.vubresto
   (:require [clojo.utils           :as      u]
             [clojo.modules.macros  :as      m]

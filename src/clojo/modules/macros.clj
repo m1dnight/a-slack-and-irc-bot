@@ -1,12 +1,8 @@
-;; Author : Christophe De Troyer
-;; Contact: <christophe.detroyer@gmail.com>
-;; Date   : 20.01.2016
-;; License: MIT
-;;  __  __                          
-;; |  \/  | __ _  ___ _ __ ___  ___ 
-;; | |\/| |/ _` |/ __| '__/ _ \/ __|
-;; | |  | | (_| | (__| | | (_) \__ \
-;; |_|  |_|\__,_|\___|_|  \___/|___/
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.modules.macros
   (:require [clojo.db              :as  db]
             [clojo.modules.modules :as mod]))

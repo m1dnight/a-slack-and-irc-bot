@@ -1,12 +1,8 @@
-;; Author : Christophe De Troyer
-;; Contact: <christophe.detroyer@gmail.com>
-;; Date   : 20.01.2016
-;; License: MIT
-;;  __  __           _       _           
-;; |  \/  | ___   __| |_   _| | ___  ___ 
-;; | |\/| |/ _ \ / _` | | | | |/ _ \/ __|
-;; | |  | | (_) | (_| | |_| | |  __/\__ \
-;; |_|  |_|\___/ \__,_|\__,_|_|\___||___/
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.modules.modules
   (:require [clojure.string        :as string]
             [clojure.tools.logging :as log]))
@@ -32,7 +28,7 @@
     ;; Execute the macro function in the module by giving it the servers.
     (when (resolve modfn)
       ((resolve modfn) instance))
-    (log/debug "Done..")))
+    (log/debug name " loaded!")))
 
 
 (defn add-handler
@@ -119,7 +115,7 @@
         (try
           (apply handler args)
           (catch Exception e
-            (log/error e "Command handler" handler "threw an exception:")))
+            (log/error "Command handler" handler "threw an exception:\n" e "\nERROR END")))
         ;; Reset the activity for the module.
         (update-last-activity instance name)))))
 
@@ -140,6 +136,6 @@
         (try
           (apply handler args)
           (catch Exception e
-            (log/error e "Hook" handler "threw an exception:")))
+            (log/error "Hook" handler "threw an exception:\n" e "\nERROR END")))
         ;; Reset the activity for the module.
         (update-last-activity instance name)))))

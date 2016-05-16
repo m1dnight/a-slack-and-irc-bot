@@ -1,14 +1,8 @@
-;; Author : Christophe De Troyer
-;; Contact: <christophe.detroyer@gmail.com>
-;; Date   : 20.01.2016
-;; License: MIT
-;;;;;;;;;;;;;;;;;;;;;;;;;
-;;        _   _ _      ;;
-;;  _   _| |_(_) |___  ;;
-;; | | | | __| | / __| ;;
-;; | |_| | |_| | \__ \ ;;
-;;  \__,_|\__|_|_|___/ ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;
+; Author:  Christophe De Troyer
+; Email:   christophe.detroyer@gmail.com
+; License: GPLv3
+; Date:    May 16, 2016
+
 (ns clojo.utils
   (:require [clojure.edn           :as edn]
             [clojure.java.io       :as  io]
@@ -37,7 +31,7 @@
                 (fn []
                   (while pred
                     (body))
-                  (log/info label " loop exiting!")))]
+                  (log/debug label " loop exiting!")))]
     (.start thread)
     thread))
 

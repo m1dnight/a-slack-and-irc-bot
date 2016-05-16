@@ -82,6 +82,12 @@ repository.
 If you were to write a new connectivity for this bot or a plugin, you can always
 find me on `freenode` under the handle `m1dnight`.
 
+
+## Things to do
+
+ 1. Make errors custom per module such that each error that is thrown
+    is logged automatically gets prepended with the module name.
+
 ## License
 
 Distributed under the MIT License.
