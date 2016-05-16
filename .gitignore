@@ -171,7 +171,6 @@ tramp
 .cask/
 # server auth directory
 /server/
-project.clj
 
 # Created by https://www.gitignore.io/api/intellij
 
