@@ -71,3 +71,11 @@
   [content & replacements]
       (let [replacement-list (partition 2 replacements)]
         (reduce #(apply clojure.string/replace %1 %2) content replacement-list)))
+
+(defn positive?
+  [x]
+  (> x 0))
+
+(defn negative?
+  [x]
+  (not (positive? x)))
