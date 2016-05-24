@@ -20,8 +20,8 @@
 ;; HELPERS ;;
 ;;;;;;;;;;;;;
 
-(def ^:dynamic resto-url-nl "https://call-cc.be/files/vub-resto/etterbeek.nl.json")
-(def ^:dynamic resto-url-en "https://call-cc.be/files/vub-resto/etterbeek.en.json")
+(def ^:dynamic resto-url-nl "http://call-cc.be/files/vub-resto/etterbeek.nl.json")
+(def ^:dynamic resto-url-en "http://call-cc.be/files/vub-resto/etterbeek.en.json")
 
 
 (defn parse-args
