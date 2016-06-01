@@ -104,7 +104,7 @@
 ;; TODO This should be a control char like \x03 or something. Figure
 ;; out how to do this in Clojure.
 (def stop-string "###stop###")
-(def chain-length 2)
+(def chain-length 4)
 (def max-words 100)
 
 
@@ -261,7 +261,7 @@
       (println msg)
       (process-message (:message msg))
       (when (> 0.1 (rand))
-          (m/reply instance msg (reply (subs msg 7)))))))
+          (m/reply instance msg (reply msg))))))
 
 
 ;; Place a .txt file in the root of the roject and then you can isnert
@@ -273,9 +273,11 @@
   (let [lines (get-lines filename)
         linec (count lines)]
     (reduce (fn [i line]
-              (when (= (mod i 1000) 0)
-                (println "Lines left: " i))
+              (when (= (mod i 500) 0)
+                (println (.format (java.text.SimpleDateFormat. "MM/dd/yyyy HH:MM:ss") (new java.util.Date))
+                         "Lines done: "
+                         i "/" linec))
               (process-message line)
-              (dec i))
-            linec
+              (inc i))
+            0
             lines)))
