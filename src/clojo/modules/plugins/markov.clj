@@ -253,8 +253,9 @@
     "speak"
     (fn [instance args msg]
       (println args)
-      (when-let [response (reply args)]
-        (m/reply instance msg response))))
+      (if-let [response (reply args)]
+        (m/reply instance msg response)
+        (m/reply instance msg "I have nothing to say!"))))
   (m/defhook
     :PRIVMSG
     (fn [instance msg]
