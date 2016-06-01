@@ -192,16 +192,21 @@
   (let [words  (loop [i   max-words        
                       key seed
                       gen []]
+                 
                  (let [[k1 k2]  (split-key key)
                        gen'     (conj gen k1)
                        nextword (lookup-rnd-dictionary key)]
-                   (cond (nil? nextword)
-                         gen'
-                         (= stop-string nextword)
-                         gen'
-                         :else
-                         (recur (dec i) (str/join "\"" [k2 nextword]) gen'))))]
-    (str/join " " words)))
+                   (cond
+                     ;; If we did not find a next word, we must have
+                     ;; found the last part of a sentence.
+                     (or (nil? nextword) (= stop-string nextword))
+                     (conj  gen' k2)
+                     (> i 0)
+                     (recur (dec i) (str/join "\"" [k2 nextword]) gen')
+                     :else
+                     nil)))]
+    (when words
+      (str/join " " words))))
 
 
 ;; Compute-message takes in a dictionary and a seed. It simply calls
@@ -254,7 +259,9 @@
     :PRIVMSG
     (fn [instance msg]
       (println msg)
-      (process-message (:message msg)))))
+      (process-message (:message msg))
+      (when (> 0.1 (rand))
+          (m/reply instance msg (reply (subs msg 7)))))))
 
 
 ;; Place a .txt file in the root of the roject and then you can isnert
