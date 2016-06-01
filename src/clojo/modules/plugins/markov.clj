@@ -197,15 +197,15 @@
                        gen'     (conj gen k1)
                        nextword (lookup-rnd-dictionary key)]
                    (cond
-                     ;; If we did not find a next word, we must have
-                     ;; found the last part of a sentence.
+                     ;; If we did not find a next word, we did not
+                     ;; find a proper ending for a sentence.
                      (or (nil? nextword) (= stop-string nextword))
                      (conj  gen' k2)
                      (> i 0)
                      (recur (dec i) (str/join "\"" [k2 nextword]) gen')
                      :else
                      nil)))]
-    (when words
+    (when (and words (long-enough words))
       (str/join " " words))))
 
 
@@ -260,7 +260,7 @@
     (fn [instance msg]
       (println msg)
       (process-message (:message msg))
-      (when (> 0.1 (rand))
+      (when (> 0.3 (rand))
           (m/reply instance msg (reply msg))))))
 
 
