@@ -7,7 +7,8 @@
   (:require [clojure.tools.logging       :as   log]
             [clojo.chatservices.slackrtm :as slack]
             [clojo.utils                 :as     u]
-            [clojo.modules.modules       :as   mod])  
+            [clojo.modules.modules       :as   mod]
+            [clojo.modules.plugins.markov])  
   (:gen-class))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -63,6 +64,7 @@
   "Reads the clojo.edn config file and then instantiates all the bots that are
   specified there."
   [& args]
+  (clojo.modules.plugins.markov/read-from-file "filtered.txt")
   (let [clojo-cfg (u/read-config-sysprop "clojo.edn")
         instances (doall
                    (map (fn [instance]

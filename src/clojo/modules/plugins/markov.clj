@@ -6,7 +6,8 @@
 (ns clojo.modules.plugins.markov
   (:use     [clojure.algo.monads]
             [korma.core         ]
-            [korma.db           ])
+            [korma.db           ]
+            [clojure.java.io    ])
   (:require [clojo.modules.macros  :as   m]
             [clojo.modules.modules :as mod]
             [clojo.db              :as  db]
@@ -62,6 +63,12 @@
   (if (> (count m) (count m'))
     m
     m'))
+
+
+(defn get-lines [fname]
+  (with-open [r (reader fname)]
+    (doall (line-seq r))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; DICTIONARY ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -158,7 +165,8 @@
   [msg]
   (-> msg
       (str/lower-case)
-      (str/replace "\"" "")))
+      (str/replace "\"" "")
+      (str/replace #"[^A-Za-z0-9\s]" "")))
 
 
 ;; process-message takes in a message (i.e., sentence) and processes
@@ -169,11 +177,11 @@
   (when (long-enough msg)
     (let [clean  (sanitize-msg msg)
           splits (split-msg clean)]
-      (map 
-       (fn [slide]
-         (let [{k :key v :value} (key-value slide)]
-           (assoc-word k v)))
-       splits))))
+      (doall (map
+              (fn [slide]
+                (let [{k :key v :value} (key-value slide)]
+                  (assoc-word k v)))
+              splits)))))
 
 
 ;; Takes a key as input and then constructs a message from the given
@@ -211,7 +219,7 @@
 ;; that input.
 (defn reply
   [sentence]
-  (if (long-enough sentence)
+  (when (long-enough sentence)
     (let [clean  (sanitize-msg sentence)
           splits (split-msg clean)
           reply  (reduce
@@ -247,3 +255,20 @@
     (fn [instance msg]
       (println msg)
       (process-message (:message msg)))))
+
+
+;; Place a .txt file in the root of the roject and then you can isnert
+;; them into the database with this.
+
+
+(defn read-from-file
+  [filename]
+  (let [lines (get-lines filename)
+        linec (count lines)]
+    (reduce (fn [i line]
+              (when (= (mod i 1000) 0)
+                (println "Lines left: " i))
+              (process-message line)
+              (dec i))
+            linec
+            lines)))
