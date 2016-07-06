@@ -1,0 +1,857 @@
+[2016-07-06 17:53:15,042][INFO][clojo.core] Connecting to slack instance :infogroep-slack
+[2016-07-06 17:53:15,044][DEBUG][clojo.chatservices.slackrtm] :infogroep-slack Connecting - Connecting WebSocket..
+[2016-07-06 17:53:15,044][DEBUG][clojo.chatservices.slackrtm] :infogroep-slack Connecting - Getting WebSocket URL..
+[2016-07-06 17:53:15,828][DEBUG][clojo.chatservices.slackrtm] :infogroep-slack Connecting - Websocket URL:  wss://mpmulti-iqs9.slack-msgs.com/websocket/7fnWV1h7NiADuNQKloVv9uImb9ZxpFIQ_Tr0EVNjWZmaiXe8xFs1yMgRQLblfjcpgLu4cxRLdnvCkbRYMCWb8GbYFrGLRqO7sxNzIjO1hj06XAfhGPDMLI5FLtmS7bzZGHOYxKUIe_1q2rlMlJ2SZg==
+[2016-07-06 17:53:16,606][INFO][clojo.modules.modules] Loading plugin google for :infogroep-slack
+[2016-07-06 17:53:16,606][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:16,627][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:16,632][DEBUG][clojo.modules.modules] google  loaded!
+[2016-07-06 17:53:16,632][INFO][clojo.modules.modules] Loading plugin karma for :infogroep-slack
+[2016-07-06 17:53:16,640][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:16,732][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"hello"}
+[2016-07-06 17:53:16,734][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-c7wn.slack-msgs.com/websocket/v6rzirOPrp2Bd0jlk4W-16k58FPj75wc3yrO30p6_qArGJtdaXaHY1UIAI0XKHO8c6bnre3GxS3eUfx3j3QNMpwOzyomAHSVRVhCrOryw4Kmwgx63tTdAmuEnLjCtrflDXiKgxWd3qb7b-59IFLuHePYEkUN2S7OGT-2aZt7ubo="}
+[2016-07-06 17:53:16,736][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type hello}
+[2016-07-06 17:53:16,738][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type reconnect_url, :url wss://mpmulti-c7wn.slack-msgs.com/websocket/v6rzirOPrp2Bd0jlk4W-16k58FPj75wc3yrO30p6_qArGJtdaXaHY1UIAI0XKHO8c6bnre3GxS3eUfx3j3QNMpwOzyomAHSVRVhCrOryw4Kmwgx63tTdAmuEnLjCtrflDXiKgxWd3qb7b-59IFLuHePYEkUN2S7OGT-2aZt7ubo=}
+[2016-07-06 17:53:16,791][DEBUG][clojo.modules.modules] karma  loaded!
+[2016-07-06 17:53:16,791][INFO][clojo.modules.modules] Loading plugin cljeval for :infogroep-slack
+[2016-07-06 17:53:16,825][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:16,829][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:16,901][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:16,952][DEBUG][clojo.modules.modules] cljeval  loaded!
+[2016-07-06 17:53:16,953][INFO][clojo.modules.modules] Loading plugin vubresto for :infogroep-slack
+[2016-07-06 17:53:17,156][DEBUG][clojo.modules.modules] vubresto  loaded!
+[2016-07-06 17:53:17,156][INFO][clojo.modules.modules] Loading plugin catfact for :infogroep-slack
+[2016-07-06 17:53:17,163][DEBUG][clojo.modules.modules] catfact  loaded!
+[2016-07-06 17:53:17,163][INFO][clojo.modules.modules] Loading plugin randomfact for :infogroep-slack
+[2016-07-06 17:53:17,171][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0BUFV84C"}
+[2016-07-06 17:53:17,178][DEBUG][clojo.modules.modules] randomfact  loaded!
+[2016-07-06 17:53:17,179][INFO][clojo.modules.modules] Loading plugin insult for :infogroep-slack
+[2016-07-06 17:53:17,184][DEBUG][clojo.modules.modules] insult  loaded!
+[2016-07-06 17:53:17,184][INFO][clojo.modules.modules] Loading plugin balance for :infogroep-slack
+[2016-07-06 17:53:17,196][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type presence_change, :presence active, :user U0BUFV84C}
+[2016-07-06 17:53:17,206][DEBUG][clojo.modules.modules] balance  loaded!
+[2016-07-06 17:53:17,207][INFO][clojo.core] Connecting to slack instance :compwe-slack
+[2016-07-06 17:53:17,207][DEBUG][clojo.chatservices.slackrtm] :compwe-slack Connecting - Connecting WebSocket..
+[2016-07-06 17:53:17,207][DEBUG][clojo.chatservices.slackrtm] :compwe-slack Connecting - Getting WebSocket URL..
+[2016-07-06 17:53:17,639][DEBUG][clojo.chatservices.slackrtm] :compwe-slack Connecting - Websocket URL:  wss://mpmulti-r27c.slack-msgs.com/websocket/Q4o9bUjQi4bfQKvShGEn8nnNTQLH-blV-OGDm6MgO53x_D2F5IMgwH8uq6GcstQ1174olQSwteFFhkoiQoxkDS5gEVbZTnBpE6QE4kcck5gzkgQcivgyd6CINXmpE50nRV8Il9-tgfTx-r0UiQqL8UfU45dNy5RmA0O_arWqIpU=
+[2016-07-06 17:53:18,411][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:18,411][INFO][clojo.modules.modules] Loading plugin google for :compwe-slack
+[2016-07-06 17:53:18,412][DEBUG][clojo.modules.modules] google  loaded!
+[2016-07-06 17:53:18,412][INFO][clojo.modules.modules] Loading plugin karma for :compwe-slack
+[2016-07-06 17:53:18,414][DEBUG][clojo.modules.modules] karma  loaded!
+[2016-07-06 17:53:18,414][INFO][clojo.modules.modules] Loading plugin uwmoeder for :compwe-slack
+[2016-07-06 17:53:18,415][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:18,420][DEBUG][clojo.modules.modules] uwmoeder  loaded!
+[2016-07-06 17:53:18,420][INFO][clojo.modules.modules] Loading plugin cljeval for :compwe-slack
+[2016-07-06 17:53:18,421][DEBUG][clojo.modules.modules] cljeval  loaded!
+[2016-07-06 17:53:18,421][INFO][clojo.modules.modules] Loading plugin vubresto for :compwe-slack
+[2016-07-06 17:53:18,422][DEBUG][clojo.modules.modules] vubresto  loaded!
+[2016-07-06 17:53:18,422][INFO][clojo.modules.modules] Loading plugin catfact for :compwe-slack
+[2016-07-06 17:53:18,423][DEBUG][clojo.modules.modules] catfact  loaded!
+[2016-07-06 17:53:18,423][INFO][clojo.modules.modules] Loading plugin randomfact for :compwe-slack
+[2016-07-06 17:53:18,423][DEBUG][clojo.modules.modules] randomfact  loaded!
+[2016-07-06 17:53:18,424][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:18,424][INFO][clojo.modules.modules] Loading plugin insult for :compwe-slack
+[2016-07-06 17:53:18,425][DEBUG][clojo.modules.modules] insult  loaded!
+[2016-07-06 17:53:18,425][INFO][clojo.modules.modules] Loading plugin xkcd for :compwe-slack
+[2016-07-06 17:53:18,432][DEBUG][clojo.modules.modules] xkcd  loaded!
+[2016-07-06 17:53:18,432][INFO][clojo.modules.modules] Loading plugin balance for :compwe-slack
+[2016-07-06 17:53:18,434][DEBUG][clojo.modules.modules] balance  loaded!
+[2016-07-06 17:53:18,434][INFO][clojo.modules.modules] Loading plugin markov for :compwe-slack
+[2016-07-06 17:53:18,437][DEBUG][clojo.modules.modules] markov  loaded!
+[2016-07-06 17:53:18,438][INFO][clojo.core] Connecting to slack instance :soft-slack
+[2016-07-06 17:53:18,438][DEBUG][clojo.chatservices.slackrtm] :soft-slack Connecting - Connecting WebSocket..
+[2016-07-06 17:53:18,438][DEBUG][clojo.chatservices.slackrtm] :soft-slack Connecting - Getting WebSocket URL..
+[2016-07-06 17:53:18,526][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"hello"}
+[2016-07-06 17:53:18,527][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type hello}
+[2016-07-06 17:53:18,527][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-3o7x.slack-msgs.com/websocket/wXLwuip57A-1ZR2FmcIsiEXd7ehZyZ-idckDOCmWqnSdB07uCxWw3YQj2NFLOaoNMuqvccFMgZKRJvZqHG3wD1XUINiPsIBClfzc795pccP5Xg6ZKVKn4D3tdTh42q8HANI6KMthbwBSmxS6ewobF_4T9NXnj2jNmuLnnSYkQIc="}
+[2016-07-06 17:53:18,529][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type reconnect_url, :url wss://mpmulti-3o7x.slack-msgs.com/websocket/wXLwuip57A-1ZR2FmcIsiEXd7ehZyZ-idckDOCmWqnSdB07uCxWw3YQj2NFLOaoNMuqvccFMgZKRJvZqHG3wD1XUINiPsIBClfzc795pccP5Xg6ZKVKn4D3tdTh42q8HANI6KMthbwBSmxS6ewobF_4T9NXnj2jNmuLnnSYkQIc=}
+[2016-07-06 17:53:18,669][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:18,673][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:18,674][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:18,838][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0KAGBNTT"}
+[2016-07-06 17:53:18,839][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type presence_change, :presence active, :user U0KAGBNTT}
+[2016-07-06 17:53:18,870][DEBUG][clojo.chatservices.slackrtm] :soft-slack Connecting - Websocket URL:  wss://mpmulti-zup8.slack-msgs.com/websocket/l5seC9oeAqIUmeDFB-q7fQLU-Yy1UWDeC5x4IoDdVkCBSy_OWdjtgKC269XlJDxHxLkkZDw_L_P3g01t6aC80htnpyiYRV-13VvGUpjR1fTL_BVbSMpm9cbJMWFN2bnwD9pw4AjZPMLIEU9p-VLd6diF77TTYIlbf1W3HSqOPck=
+[2016-07-06 17:53:19,541][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:19,541][INFO][clojo.modules.modules] Loading plugin google for :soft-slack
+[2016-07-06 17:53:19,541][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:19,542][DEBUG][clojo.modules.modules] google  loaded!
+[2016-07-06 17:53:19,542][INFO][clojo.modules.modules] Loading plugin karma for :soft-slack
+[2016-07-06 17:53:19,543][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:19,544][DEBUG][clojo.modules.modules] karma  loaded!
+[2016-07-06 17:53:19,544][INFO][clojo.modules.modules] Loading plugin cljeval for :soft-slack
+[2016-07-06 17:53:19,545][DEBUG][clojo.modules.modules] cljeval  loaded!
+[2016-07-06 17:53:19,545][INFO][clojo.modules.modules] Loading plugin vubresto for :soft-slack
+[2016-07-06 17:53:19,546][DEBUG][clojo.modules.modules] vubresto  loaded!
+[2016-07-06 17:53:19,546][INFO][clojo.modules.modules] Loading plugin catfact for :soft-slack
+[2016-07-06 17:53:19,547][DEBUG][clojo.modules.modules] catfact  loaded!
+[2016-07-06 17:53:19,547][INFO][clojo.modules.modules] Loading plugin randomfact for :soft-slack
+[2016-07-06 17:53:19,547][DEBUG][clojo.modules.modules] randomfact  loaded!
+[2016-07-06 17:53:19,645][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"hello"}
+[2016-07-06 17:53:19,647][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-fp21.slack-msgs.com/websocket/ON-jp6gHFbeEAhTcSR3ogTkNN7Hl9rbepBc1KC7rDvUD78VMh-hX1DDv7eWGYRVgFThCKrYVvqCSTwhWtH-qIK1NMtVazlz36EJ0NQ7-KIn4X0Ctxt17TiJhV-dzhfVxUtfg6jRL6-gtgDOKlKVAHIqJGKn-rFz0KoqFTfKMAyg="}
+[2016-07-06 17:53:19,647][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type hello}
+[2016-07-06 17:53:19,648][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type reconnect_url, :url wss://mpmulti-fp21.slack-msgs.com/websocket/ON-jp6gHFbeEAhTcSR3ogTkNN7Hl9rbepBc1KC7rDvUD78VMh-hX1DDv7eWGYRVgFThCKrYVvqCSTwhWtH-qIK1NMtVazlz36EJ0NQ7-KIn4X0Ctxt17TiJhV-dzhfVxUtfg6jRL6-gtgDOKlKVAHIqJGKn-rFz0KoqFTfKMAyg=}
+[2016-07-06 17:53:19,784][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:19,784][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:19,785][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:20,208][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0QBZJR6Z"}
+[2016-07-06 17:53:20,209][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type presence_change, :presence active, :user U0QBZJR6Z}
+[2016-07-06 17:53:21,215][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U02C2HBND"}
+[2016-07-06 17:53:21,215][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type presence_change, :presence active, :user U02C2HBND}
+[2016-07-06 17:53:21,901][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:21,902][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:21,902][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:22,006][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:22,007][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:22,007][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:23,674][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:23,674][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:23,675][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:23,778][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:23,778][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:23,779][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:24,785][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:24,785][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:24,785][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:24,889][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:24,890][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:24,890][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:27,008][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:27,008][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:27,009][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:27,112][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:27,113][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:27,113][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:28,779][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:28,779][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:28,780][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:28,883][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:28,884][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:28,884][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:29,890][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:29,891][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:29,891][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:29,996][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:29,997][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:29,997][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:32,113][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:32,113][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:32,114][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:32,218][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:32,218][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:32,219][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:33,884][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:33,884][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:33,885][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:33,988][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:33,989][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:33,989][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:34,997][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:34,998][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:34,998][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:35,101][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:35,102][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:35,103][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:37,219][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:37,219][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:37,219][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:37,322][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:37,323][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:37,323][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:38,989][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:38,990][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:38,990][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:39,094][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:39,094][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:39,095][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:40,103][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:40,103][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:40,103][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:40,209][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:40,209][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:40,210][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:42,324][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:42,324][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:42,324][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:42,427][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:42,428][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:42,428][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:44,095][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:44,095][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:44,096][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:44,199][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:44,200][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:44,200][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:45,210][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:45,210][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:45,211][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:45,314][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:45,315][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:45,316][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:47,428][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:47,429][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:47,429][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:47,532][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:47,533][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:47,533][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:49,200][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:49,201][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:49,201][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:49,305][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:49,306][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:49,307][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:50,316][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:50,316][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:50,316][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:50,421][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:50,421][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:50,422][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:52,534][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:52,534][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:52,534][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:52,639][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:52,640][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:52,640][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:54,307][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:54,307][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:54,308][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:54,413][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:54,414][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:54,414][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:55,422][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:55,422][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:55,423][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:55,527][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:55,527][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:55,528][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:57,640][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:57,641][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:57,641][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:57,744][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:57,744][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:57,745][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:53:59,414][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:53:59,415][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:53:59,415][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:53:59,518][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:53:59,519][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:53:59,519][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:00,528][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:00,529][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:00,529][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:00,634][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:00,634][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:00,635][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:02,745][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:02,746][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:02,746][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:02,849][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:02,850][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:02,851][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:04,519][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:04,520][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:04,520][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:04,626][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:04,626][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:04,627][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:05,635][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:05,635][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:05,636][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:05,739][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:05,740][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:05,740][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:07,851][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:07,851][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:07,852][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:07,955][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:07,955][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:07,956][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:09,627][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:09,627][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:09,628][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:09,731][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:09,732][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:09,733][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:10,740][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:10,741][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:10,741][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:10,845][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:10,845][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:10,846][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:12,956][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:12,956][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:12,957][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:13,062][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:13,062][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:13,063][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:14,733][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:14,733][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:14,734][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:14,839][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:14,839][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:14,840][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:15,846][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:15,846][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:15,847][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:15,951][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:15,951][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:15,951][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:18,063][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:18,063][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:18,064][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:18,167][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:18,167][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:18,168][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:19,840][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:19,840][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:19,841][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:19,945][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:19,946][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:19,946][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:20,952][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:20,952][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:20,953][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:21,057][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:21,057][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:21,058][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:23,168][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:23,168][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:23,169][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:23,281][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:23,282][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:23,282][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:24,946][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:24,947][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:24,947][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:25,052][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:25,052][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:25,053][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:26,058][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:26,058][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:26,059][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:26,163][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:26,163][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:26,164][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:28,283][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:28,283][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:28,283][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:28,387][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:28,387][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:28,387][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:30,053][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:30,053][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:30,054][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:30,156][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:30,157][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:30,157][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:31,164][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:31,164][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:31,164][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:31,269][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:31,270][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:31,270][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:33,388][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:33,388][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:33,388][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:33,491][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:33,491][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:33,492][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:35,158][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:35,158][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:35,158][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:35,261][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:35,262][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:35,263][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:36,270][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:36,271][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:36,271][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:36,375][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:36,376][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:36,376][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:38,492][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:38,492][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:38,493][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:38,596][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:38,596][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:38,597][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:40,263][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:40,263][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:40,264][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:40,368][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:40,369][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:40,369][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:41,376][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:41,377][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:41,377][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:41,481][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:41,482][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:41,482][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:43,597][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:43,597][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:43,598][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:43,702][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:43,703][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:43,703][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:45,370][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:45,370][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:45,370][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:45,475][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:45,476][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:45,476][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:46,482][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:46,482][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:46,483][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:46,587][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:46,587][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:46,588][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:48,113][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-bmt2.slack-msgs.com/websocket/aHzjKuYwnpZZsxhSS5CEhb4d90Nofgags--FL-YRJE6XSOWcFeYBgskRI0xJQ7fFgfWkumCQOrNfO_SwETlDgOKTAUgeOF6V5SMah2FADwdu0uB3CzRmq2JPssvEnzkkFCk9UarYpG2LuZt322mukw4l_gKGHYz8sKYxueQVJtk="}
+[2016-07-06 17:54:48,113][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type reconnect_url, :url wss://mpmulti-bmt2.slack-msgs.com/websocket/aHzjKuYwnpZZsxhSS5CEhb4d90Nofgags--FL-YRJE6XSOWcFeYBgskRI0xJQ7fFgfWkumCQOrNfO_SwETlDgOKTAUgeOF6V5SMah2FADwdu0uB3CzRmq2JPssvEnzkkFCk9UarYpG2LuZt322mukw4l_gKGHYz8sKYxueQVJtk=}
+[2016-07-06 17:54:48,703][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:48,704][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:48,704][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:48,807][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:48,808][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:48,808][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:50,261][ERROR][clojo.utils] Config db.edn does not exist!
+[2016-07-06 17:54:50,476][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:50,477][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:50,477][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:50,580][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:50,581][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:50,581][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:51,588][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:51,588][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:51,589][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:51,692][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:51,693][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:51,693][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:53,763][ERROR][clojo.utils] Config db.edn does not exist!
+[2016-07-06 17:54:53,808][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:53,809][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:53,809][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:53,912][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:53,912][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:53,913][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:55,582][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:55,582][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:55,582][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:55,688][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:55,688][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:55,689][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:56,693][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:56,694][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:56,694][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:56,798][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:56,799][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:56,799][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:54:56,851][ERROR][clojo.utils] Config db.edn does not exist!
+[2016-07-06 17:54:58,913][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:54:58,913][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:54:58,914][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:54:59,019][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:54:59,019][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:54:59,020][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:00,689][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:00,689][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:00,689][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:00,792][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:00,793][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:00,793][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:01,800][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:01,800][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:01,800][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:01,904][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:01,904][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:01,905][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:04,020][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:04,021][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:04,021][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:04,124][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:04,125][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:04,125][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:05,776][ERROR][clojo.chatservices.slackrtm] Slack websocket closed. (1001 Shutdown)
+[2016-07-06 17:55:05,793][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:05,794][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:05,794][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:05,795][ERROR][clojo.chatservices.slackrtm] Slack websocket closed. (1001 Shutdown)
+[2016-07-06 17:55:05,806][ERROR][clojo.chatservices.slackrtm] Slack websocket closed. (1001 Shutdown)
+[2016-07-06 17:55:08,707][INFO][clojo.core] Connecting to slack instance :infogroep-slack
+[2016-07-06 17:55:08,710][DEBUG][clojo.chatservices.slackrtm] :infogroep-slack Connecting - Connecting WebSocket..
+[2016-07-06 17:55:08,710][DEBUG][clojo.chatservices.slackrtm] :infogroep-slack Connecting - Getting WebSocket URL..
+[2016-07-06 17:55:09,483][DEBUG][clojo.chatservices.slackrtm] :infogroep-slack Connecting - Websocket URL:  wss://mpmulti-3r9l.slack-msgs.com/websocket/1jWtuyAHO04HrMUJVHcMrvhKa0lTDDfjyCOVMqCa2FYtVIBSCfEH9IJXRed2BoP4YpL3plnVRiI-uvBmsIbz5GG7Vk1KQL8ANEhGJEVfZkZWb1YccbzLL7AAJ9GS4D6j14RC_CQGnh6U3jqDLk0vhuDd7QMhpNxuLmFEDOX153Q=
+[2016-07-06 17:55:10,289][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:10,289][INFO][clojo.modules.modules] Loading plugin google for :infogroep-slack
+[2016-07-06 17:55:10,314][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:10,319][DEBUG][clojo.modules.modules] google  loaded!
+[2016-07-06 17:55:10,319][INFO][clojo.modules.modules] Loading plugin karma for :infogroep-slack
+[2016-07-06 17:55:10,328][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:10,412][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"hello"}
+[2016-07-06 17:55:10,413][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-myh1.slack-msgs.com/websocket/xdnfwNxCfZ7ivZEdgGksaf-ONqcY-_CiDZDvb5h7nwwgix6SUUQZ4PmP6koxqnsyRRKfPUsAehRmoCGgTEtH0IFm463JQ26jLus2GbwLiuDhRacJlK00wfXAW2h0OMpvI-UwNzjYsxGXB7t3TZhqueCUjEx4_TU1Vzh2CzhRp3w="}
+[2016-07-06 17:55:10,416][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type hello}
+[2016-07-06 17:55:10,439][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type reconnect_url, :url wss://mpmulti-myh1.slack-msgs.com/websocket/xdnfwNxCfZ7ivZEdgGksaf-ONqcY-_CiDZDvb5h7nwwgix6SUUQZ4PmP6koxqnsyRRKfPUsAehRmoCGgTEtH0IFm463JQ26jLus2GbwLiuDhRacJlK00wfXAW2h0OMpvI-UwNzjYsxGXB7t3TZhqueCUjEx4_TU1Vzh2CzhRp3w=}
+[2016-07-06 17:55:10,461][DEBUG][clojo.modules.modules] karma  loaded!
+[2016-07-06 17:55:10,461][INFO][clojo.modules.modules] Loading plugin cljeval for :infogroep-slack
+[2016-07-06 17:55:10,550][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:10,559][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:10,579][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:10,601][DEBUG][clojo.modules.modules] cljeval  loaded!
+[2016-07-06 17:55:10,601][INFO][clojo.modules.modules] Loading plugin vubresto for :infogroep-slack
+[2016-07-06 17:55:10,627][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0BUFV84C"}
+[2016-07-06 17:55:10,666][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type presence_change, :presence active, :user U0BUFV84C}
+[2016-07-06 17:55:10,794][DEBUG][clojo.modules.modules] vubresto  loaded!
+[2016-07-06 17:55:10,794][INFO][clojo.modules.modules] Loading plugin catfact for :infogroep-slack
+[2016-07-06 17:55:10,800][DEBUG][clojo.modules.modules] catfact  loaded!
+[2016-07-06 17:55:10,800][INFO][clojo.modules.modules] Loading plugin randomfact for :infogroep-slack
+[2016-07-06 17:55:10,814][DEBUG][clojo.modules.modules] randomfact  loaded!
+[2016-07-06 17:55:10,814][INFO][clojo.modules.modules] Loading plugin insult for :infogroep-slack
+[2016-07-06 17:55:10,819][DEBUG][clojo.modules.modules] insult  loaded!
+[2016-07-06 17:55:10,819][INFO][clojo.modules.modules] Loading plugin balance for :infogroep-slack
+[2016-07-06 17:55:10,829][DEBUG][clojo.modules.modules] balance  loaded!
+[2016-07-06 17:55:10,830][INFO][clojo.core] Connecting to slack instance :compwe-slack
+[2016-07-06 17:55:10,830][DEBUG][clojo.chatservices.slackrtm] :compwe-slack Connecting - Connecting WebSocket..
+[2016-07-06 17:55:10,830][DEBUG][clojo.chatservices.slackrtm] :compwe-slack Connecting - Getting WebSocket URL..
+[2016-07-06 17:55:11,251][DEBUG][clojo.chatservices.slackrtm] :compwe-slack Connecting - Websocket URL:  wss://mpmulti-l7ke.slack-msgs.com/websocket/1UP1J8n9Y8Qs6P02dku4VIu9lrfLzrPPepk_AnuVHhx5Ti1X9Ckx91tUjSxp_dVo9QASbA8KpyT6Q-mYcCcTJdjo234cuUmAhjRgSM9kuS74W1i6qbAegttH0AG7UO0uLFP8U4TzobckcXvmuxB04Q==
+[2016-07-06 17:55:11,932][INFO][clojo.modules.modules] Loading plugin google for :compwe-slack
+[2016-07-06 17:55:11,932][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:11,933][DEBUG][clojo.modules.modules] google  loaded!
+[2016-07-06 17:55:11,933][INFO][clojo.modules.modules] Loading plugin karma for :compwe-slack
+[2016-07-06 17:55:11,936][DEBUG][clojo.modules.modules] karma  loaded!
+[2016-07-06 17:55:11,942][INFO][clojo.modules.modules] Loading plugin uwmoeder for :compwe-slack
+[2016-07-06 17:55:11,937][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:11,952][DEBUG][clojo.modules.modules] uwmoeder  loaded!
+[2016-07-06 17:55:11,952][INFO][clojo.modules.modules] Loading plugin cljeval for :compwe-slack
+[2016-07-06 17:55:11,953][DEBUG][clojo.modules.modules] cljeval  loaded!
+[2016-07-06 17:55:11,953][INFO][clojo.modules.modules] Loading plugin vubresto for :compwe-slack
+[2016-07-06 17:55:11,953][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:11,954][DEBUG][clojo.modules.modules] vubresto  loaded!
+[2016-07-06 17:55:11,954][INFO][clojo.modules.modules] Loading plugin catfact for :compwe-slack
+[2016-07-06 17:55:11,954][DEBUG][clojo.modules.modules] catfact  loaded!
+[2016-07-06 17:55:11,955][INFO][clojo.modules.modules] Loading plugin randomfact for :compwe-slack
+[2016-07-06 17:55:11,955][DEBUG][clojo.modules.modules] randomfact  loaded!
+[2016-07-06 17:55:11,955][INFO][clojo.modules.modules] Loading plugin insult for :compwe-slack
+[2016-07-06 17:55:11,956][DEBUG][clojo.modules.modules] insult  loaded!
+[2016-07-06 17:55:11,956][INFO][clojo.modules.modules] Loading plugin xkcd for :compwe-slack
+[2016-07-06 17:55:11,964][DEBUG][clojo.modules.modules] xkcd  loaded!
+[2016-07-06 17:55:11,964][INFO][clojo.modules.modules] Loading plugin balance for :compwe-slack
+[2016-07-06 17:55:11,966][DEBUG][clojo.modules.modules] balance  loaded!
+[2016-07-06 17:55:11,966][INFO][clojo.modules.modules] Loading plugin markov for :compwe-slack
+[2016-07-06 17:55:11,969][DEBUG][clojo.modules.modules] markov  loaded!
+[2016-07-06 17:55:11,970][INFO][clojo.core] Connecting to slack instance :soft-slack
+[2016-07-06 17:55:11,970][DEBUG][clojo.chatservices.slackrtm] :soft-slack Connecting - Connecting WebSocket..
+[2016-07-06 17:55:11,970][DEBUG][clojo.chatservices.slackrtm] :soft-slack Connecting - Getting WebSocket URL..
+[2016-07-06 17:55:12,055][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"hello"}
+[2016-07-06 17:55:12,056][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-gald.slack-msgs.com/websocket/SSxqBZxHf72jVG5fAsnahWOVYbtLSHQ0U9bmvZpboX5KlK1dZ0MsEnN0LfxYcmU7BkIid69ydyusmlBReMDOBQLCKLQ5pqicMhEnx3FFSl8QPo9S7dRr32m6cjgajpLBdR6-zamn8g5Nmk5j8JdYUZXMd7zNt7Elat7dHvDsJF8="}
+[2016-07-06 17:55:12,057][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type hello}
+[2016-07-06 17:55:12,058][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type reconnect_url, :url wss://mpmulti-gald.slack-msgs.com/websocket/SSxqBZxHf72jVG5fAsnahWOVYbtLSHQ0U9bmvZpboX5KlK1dZ0MsEnN0LfxYcmU7BkIid69ydyusmlBReMDOBQLCKLQ5pqicMhEnx3FFSl8QPo9S7dRr32m6cjgajpLBdR6-zamn8g5Nmk5j8JdYUZXMd7zNt7Elat7dHvDsJF8=}
+[2016-07-06 17:55:12,195][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:12,201][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:12,202][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:12,394][DEBUG][clojo.chatservices.slackrtm] :soft-slack Connecting - Websocket URL:  wss://mpmulti-6ft8.slack-msgs.com/websocket/PBRKy_SVa5CfeZz5rTqGLC8wKP5Eiw-HbU99anXvHQ-soaObcZ_VEXz3zPS5NMQnWWQ45Rbvl1F1-kL5hXdYtBN4cFU8L7pj0rEYyCsdCbEbkO8MElkcAN_-WdmB-zd2hJbX_yCPvqIQMubptLRH6ByTyQIe6nixy58pGRlgq-k=
+[2016-07-06 17:55:12,592][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0KAGBNTT"}
+[2016-07-06 17:55:12,593][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type presence_change, :presence active, :user U0KAGBNTT}
+[2016-07-06 17:55:13,045][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:13,045][INFO][clojo.modules.modules] Loading plugin google for :soft-slack
+[2016-07-06 17:55:13,045][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:13,046][DEBUG][clojo.modules.modules] google  loaded!
+[2016-07-06 17:55:13,046][INFO][clojo.modules.modules] Loading plugin karma for :soft-slack
+[2016-07-06 17:55:13,046][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:13,049][DEBUG][clojo.modules.modules] karma  loaded!
+[2016-07-06 17:55:13,049][INFO][clojo.modules.modules] Loading plugin cljeval for :soft-slack
+[2016-07-06 17:55:13,050][DEBUG][clojo.modules.modules] cljeval  loaded!
+[2016-07-06 17:55:13,051][INFO][clojo.modules.modules] Loading plugin vubresto for :soft-slack
+[2016-07-06 17:55:13,051][DEBUG][clojo.modules.modules] vubresto  loaded!
+[2016-07-06 17:55:13,052][INFO][clojo.modules.modules] Loading plugin catfact for :soft-slack
+[2016-07-06 17:55:13,052][DEBUG][clojo.modules.modules] catfact  loaded!
+[2016-07-06 17:55:13,052][INFO][clojo.modules.modules] Loading plugin randomfact for :soft-slack
+[2016-07-06 17:55:13,053][DEBUG][clojo.modules.modules] randomfact  loaded!
+[2016-07-06 17:55:13,150][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"hello"}
+[2016-07-06 17:55:13,151][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-wcze.slack-msgs.com/websocket/FFI_2TSDzCkAksJR4THge3q_TOsswxQeOE7KGNVEzkoLTw3sNUNSpiVJPremy0q-EM_in-D0odOgeIjfItma-H2t__ao1UWhaJafbLkKDH7yWO7_gnJOUB11uZ322iKmcZrdcsURjhCM90sGYK1hlo7wQT38WvX3wXsu86bk6rc="}
+[2016-07-06 17:55:13,151][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0QBZJR6Z"}
+[2016-07-06 17:55:13,152][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type hello}
+[2016-07-06 17:55:13,152][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type reconnect_url, :url wss://mpmulti-wcze.slack-msgs.com/websocket/FFI_2TSDzCkAksJR4THge3q_TOsswxQeOE7KGNVEzkoLTw3sNUNSpiVJPremy0q-EM_in-D0odOgeIjfItma-H2t__ao1UWhaJafbLkKDH7yWO7_gnJOUB11uZ322iKmcZrdcsURjhCM90sGYK1hlo7wQT38WvX3wXsu86bk6rc=}
+[2016-07-06 17:55:13,153][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type presence_change, :presence active, :user U0QBZJR6Z}
+[2016-07-06 17:55:13,152][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"presence_change","presence":"active","user":"U0QBZJR6Z"}
+[2016-07-06 17:55:13,159][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type presence_change, :presence active, :user U0QBZJR6Z}
+[2016-07-06 17:55:13,289][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:13,290][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:13,290][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:15,579][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:15,579][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:15,580][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:15,689][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:15,689][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:15,690][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:17,203][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:17,203][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:17,203][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:17,307][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:17,307][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:17,308][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:18,291][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:18,291][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:18,292][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:18,398][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:18,399][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:18,399][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:20,690][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:20,690][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:20,690][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:20,800][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:20,800][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:20,801][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:22,308][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:22,308][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:22,311][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:22,415][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:22,415][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:22,416][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:23,399][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:23,400][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:23,400][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:23,508][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:23,508][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:23,509][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:25,801][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:25,801][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:25,802][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:25,911][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:25,911][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:25,912][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:27,416][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:27,417][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:27,417][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:27,520][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:27,520][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:27,521][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:28,509][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:28,510][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:28,510][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:28,617][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:28,618][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:28,618][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:30,912][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:30,912][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:30,913][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:31,023][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:31,024][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:31,024][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:32,521][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:32,521][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:32,522][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:32,626][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:32,627][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:32,627][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:33,618][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:33,619][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:33,619][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:33,724][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:33,724][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:33,725][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:36,025][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:36,025][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:36,025][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:36,136][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:36,136][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:36,137][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:37,628][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:37,628][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:37,628][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:37,731][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:37,731][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:37,732][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:38,725][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:38,725][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:38,726][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:38,830][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:38,831][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:38,831][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:41,137][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:41,137][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:41,138][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:41,247][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:41,247][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:41,248][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:42,732][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:42,732][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:42,733][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:42,835][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:42,836][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:42,836][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:43,831][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:43,832][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:43,832][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:43,937][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:43,937][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:43,938][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:46,248][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:46,248][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:46,249][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:46,358][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:46,359][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:46,359][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:47,836][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:47,837][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:47,837][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:47,940][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:47,940][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:47,941][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:48,938][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:48,938][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:48,939][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:49,043][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:49,044][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:49,044][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:51,360][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:51,360][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:51,360][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:51,470][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:51,470][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:51,471][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:52,941][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:52,941][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:52,942][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:53,044][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:53,045][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:53,046][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:54,044][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:54,044][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:54,045][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:54,149][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:54,150][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:54,150][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:56,471][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:56,471][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:56,472][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:56,581][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:56,581][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:56,582][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:58,046][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:58,046][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:58,047][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:58,148][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:58,149][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:58,149][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:55:59,151][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:55:59,151][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:55:59,151][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:55:59,255][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:55:59,256][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:55:59,256][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:01,582][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:01,582][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:01,583][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:01,692][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:01,693][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:01,693][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:03,150][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:03,150][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:03,150][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:03,253][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:03,254][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:03,255][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:04,257][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:04,257][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:04,257][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:04,362][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:04,363][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:04,363][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:06,694][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:06,694][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:06,694][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:06,804][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:06,805][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:06,806][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:08,255][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:08,255][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:08,256][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:08,358][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:08,359][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:08,359][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:09,363][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:09,364][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:09,364][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:09,469][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:09,469][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:09,469][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:11,806][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:11,806][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:11,807][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:11,916][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:11,917][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:11,917][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:13,359][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:13,360][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:13,361][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:13,463][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:13,464][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:13,464][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:13,725][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-epdx.slack-msgs.com/websocket/PxRjS6nrRUHvnNCjHcsvi2ZWVNaXNMBVmH2AB8ko2IR3je4sQ23wvkwxAbSFdBaVuM0v-bg1GOf0UV0kbAffR11RU6u3or6RrsYdLy81-F_hX5Fo35aqfzIhs2wU2r05qOQq4U77KucfQzYWLYJpRQgeNHfIPzS9cRsbkDY_Ja0="}
+[2016-07-06 17:56:13,726][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type reconnect_url, :url wss://mpmulti-epdx.slack-msgs.com/websocket/PxRjS6nrRUHvnNCjHcsvi2ZWVNaXNMBVmH2AB8ko2IR3je4sQ23wvkwxAbSFdBaVuM0v-bg1GOf0UV0kbAffR11RU6u3or6RrsYdLy81-F_hX5Fo35aqfzIhs2wU2r05qOQq4U77KucfQzYWLYJpRQgeNHfIPzS9cRsbkDY_Ja0=}
+[2016-07-06 17:56:14,470][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:14,470][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:14,471][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:14,575][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:14,575][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:14,576][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:16,917][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:16,918][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:16,918][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:17,027][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:17,028][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:17,028][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:18,465][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:18,465][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:18,465][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:18,496][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"reconnect_url","url":"wss://mpmulti-j90g.slack-msgs.com/websocket/zO-adTK1mta0nMCRR7YYufBtpVSHr5eANftxi6x8OCpn7IsnjCcNCFgzabgDDPiKAGNspb90_GvZCS3Rgjqz_fHiIg4gNe5ftkM0g8gXIQDWiMrB556xJ3ymTj2FQALNrNGOhvto2XRa3CiaJ_ieg0tt5BJQZtT7IftrRCG3E58="}
+[2016-07-06 17:56:18,497][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type reconnect_url, :url wss://mpmulti-j90g.slack-msgs.com/websocket/zO-adTK1mta0nMCRR7YYufBtpVSHr5eANftxi6x8OCpn7IsnjCcNCFgzabgDDPiKAGNspb90_GvZCS3Rgjqz_fHiIg4gNe5ftkM0g8gXIQDWiMrB556xJ3ymTj2FQALNrNGOhvto2XRa3CiaJ_ieg0tt5BJQZtT7IftrRCG3E58=}
+[2016-07-06 17:56:18,571][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:18,572][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:18,572][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:19,576][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:19,576][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:19,577][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:19,681][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:19,681][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:19,682][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:22,029][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:22,029][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:22,029][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:22,141][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:22,141][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:22,142][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:23,573][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:23,573][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:23,573][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:23,677][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:23,678][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:23,679][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:24,682][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:24,683][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:24,683][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:24,788][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:24,789][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:24,789][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:27,142][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:27,142][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:27,143][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:27,252][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:27,253][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:27,253][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:28,679][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:28,679][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:28,680][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:28,783][TRACE][clojo.chatservices.slackrtm] :compwe-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:28,783][TRACE][clojo.chatservices.slackrtm] :compwe-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:28,784][TRACE][clojo.chatservices.slackrtm] :compwe-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:29,790][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:29,790][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:29,794][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:29,900][TRACE][clojo.chatservices.slackrtm] :soft-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:29,900][TRACE][clojo.chatservices.slackrtm] :soft-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:29,900][TRACE][clojo.chatservices.slackrtm] :soft-slack Heartbeat - Received heartbeat
+[2016-07-06 17:56:32,254][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Sending heartbeat
+[2016-07-06 17:56:32,254][TRACE][clojo.chatservices.slackrtm] Sending raw message {:id 1234, :type ping}
+[2016-07-06 17:56:32,255][TRACE][clojo.chatservices.slackrtm] Putting message on socket: {"id":1234,"type":"ping"}
+[2016-07-06 17:56:32,364][TRACE][clojo.chatservices.slackrtm] :infogroep-slack WebSocket - Incoming:  {"type":"pong","reply_to":1234}
+[2016-07-06 17:56:32,365][TRACE][clojo.chatservices.slackrtm] :infogroep-slack IN : {:type pong, :reply_to 1234}
+[2016-07-06 17:56:32,365][TRACE][clojo.chatservices.slackrtm] :infogroep-slack Heartbeat - Received heartbeat
