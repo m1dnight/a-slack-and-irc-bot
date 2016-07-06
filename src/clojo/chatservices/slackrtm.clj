@@ -11,7 +11,6 @@
             [cheshire.core         :as   cs]
             [clojo.utils           :as    u]))
 
-
 (declare from-config)
 (declare process-incoming)
 (declare process-outgoing)
@@ -31,7 +30,6 @@
 ;;; PUBLIC FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 (defn create-instance
   "Creates an instance for a slack connection based on a config."
   [cfg-map dispatcher]
@@ -40,7 +38,6 @@
      (alter instance #(assoc % :dispatcher dispatcher)))
     instance))
 
-
 (defn init-connection
   "Takes a bot instance and makes the actual connection to the Slack instance."
   [instance]
@@ -48,11 +45,9 @@
   (monitor-server instance)
   instance)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; PRIVATE FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 (defn- verify-config
   "Given a config, verifies that all the required fields are present."
@@ -60,7 +55,6 @@
   (let [required [:type :name :token :prefix]]
     (when-not (every? cfg required)
       (log/error "Cannot create connection with incomplete config:\n" cfg "\nrequired: " required))))
-
 
 (defn- from-config
   "Given a config, created a transactional variable that will contain all the
@@ -84,10 +78,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Connection to Slack
 
-
 (defn- get-websocket-url 
   "Connects to Slack and request a websocket url, based on a given token.."
   [instance]
+  (log/debug (:name @instance) "Connecting - Getting WebSocket URL..")
   (try
     (let [response (-> (http/get socket-url
                                  {:query-params {:token      (:token @instance)
@@ -95,18 +89,20 @@
                                   :as :json})
                        :body)]
       (if (:ok response)
-        (:url response)
-        (log/error  (:name @instance) "Websocket URL refused by Slack! Error:" (:error response))))
+        (do
+          (log/debug (:name @instance) "Connecting - Websocket URL: " (:url response))
+          (:url response))
+        (log/error  (:name @instance) "Connecting - Websocket URL refused by Slack! Error:" (:error response))))
     (catch Exception e
-      (log/error  (:name @instance) "Could not get websocket URL from Slack instance.")
+      (log/error  (:name @instance) "Connecting - Could not get websocket URL from Slack instance.")
       nil)))
-
 
 (defn- connect-websocket
   "Given an instance, connects to the defined Slack instance."
   [instance]
-  (when-let [socket-url (get-websocket-url instance)]
+  (if-let [socket-url (get-websocket-url instance)]
     (let [rcv-fn     (fn [in]
+                       (log/trace (:name @instance) "WebSocket - Incoming: " in)
                        (as/put! (:incoming @instance) in))
           error-fn   (fn [& arg]
                        (log/error (:name @instance) "Slack websocket error: " arg)
@@ -120,8 +116,8 @@
                       :on-error   error-fn
                       :on-close   close-fn)]
       (dosync 
-       (alter instance #(assoc % :socket socket :connected true))))))
-
+       (alter instance #(assoc % :socket socket :connected true))))
+    (log/error (:name @instance) " Dit not get WebSocket URL!")))
 
 (defn- disconnect-websocket
   "Given an isntance, disconnects the websocket if possible."
@@ -133,12 +129,12 @@
        ;; If the socket is already closed, we don't care.
        (catch Exception e nil)))))
 
-
 (defn- connect
   "Given an instance of a connection, makes the actual connection and listens
   for in- and outgoing messages on the channels."
   [instance]
   ;; First of all, connect the Slack socket.
+  (log/debug (:name @instance) "Connecting - Connecting WebSocket..")
   (connect-websocket instance)
   ;; Now we have a connection, set up the threads to listen for a message.
   (let [receiver-thread
@@ -160,7 +156,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Reconnecting And Monitor
 
-
 (defn- reconnect-server
   "Reconnects the current server."
   [instance]
@@ -168,6 +163,7 @@
   ;; Reset status.
   (dosync
    (disconnect-websocket instance)
+   (log/debug (:name @instance) "Reconnecting - WebSocket closed")
    (alter instance
           #(assoc %
                   :socket     nil
@@ -175,26 +171,27 @@
                   :incoming   (as/chan))))
   (connect instance))
 
-
 (defn- heartbeat
   "Send a ping message to the Slack instance. This function should be run in a
   seperate thread to be executing perpetually."
   [instance]
   ;; Send an initial ping.
+  (log/trace (:name @instance) "Heartbeat - Sending heartbeat")
   (send-message-raw instance {:id 1234 :type "ping"})
   ;; Wait for the reply.
 
   (if-let [reply (u/read-with-timeout (:heartbeat @instance) 5000)]
     ;; If a pong is received, wait for a proper amount of time.
-    (Thread/sleep 5000)
+    (do (log/trace (:name @instance) "Heartbeat - Received heartbeat")
+        (Thread/sleep 5000))
     ;; If no pong is received, try a reconnect and keep trying until it
     ;; succeeds.
     (dosync
+     (log/trace (:name @instance) "Heartbeat - Did not receive heartbeat, reconnecting.")
      (reconnect-server instance)
      (while (not (:connected @instance))
        (Thread/sleep 2000) ;; Attempt connect every 2 seconds.
        (reconnect-server instance)))))
-
 
 (defn monitor-server
   "Given an instance, will attach a heartbeat thread to it. "
@@ -208,11 +205,8 @@
             #(assoc % :monitor heartbeat)))
     instance))
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Message Handlers
-
 
 (defn process-incoming
   "Tries to read a message from the channel. Times out after 5 seconds. When it
@@ -232,7 +226,6 @@
         (log/debug (:name @instance) "Dispatching:" parsed)
         ((:dispatcher @instance) instance parsed)))))
 
-
 (defn process-outgoing
   "Reads a single message from the outgoing channel and sends it over the socket
   to the slack server."
@@ -241,14 +234,12 @@
     (log/trace "Putting message on socket:"  (cs/generate-string msg))
     (ws/send-msg (:socket @instance) (cs/generate-string msg))))
 
-
 (defn send-message-raw
   "Sends a message over the socket without encoding it to the slack format."
   [instance map]
   (log/trace "Sending raw message" map)
   (let [chan (:outgoing @instance)]
     (as/>!! chan map)))
-
 
 (defn send-message
   "Takes a generic message map. I.e., a map with the elements :message
@@ -258,7 +249,6 @@
   [instance channel message]
   (send-message-raw instance
    (encode-message instance {:message message :channel channel})))
-
 
 (defn- handle-pong
   "Actions to take when the server sends us a pong message. Pong is a
@@ -271,7 +261,6 @@
 ;;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 (defn next-id
   "Given a bot instance, increments the message id by one and returns the new
   value."
@@ -283,12 +272,10 @@
      (alter instance #(assoc % :id-gen new))
      old)))
 
-
 (defn pong?
   "Check if an incoming message is a pong."
   [msg]
   (= "pong" (:type msg)))
-
 
 (defn text-msg?
   "Given a raw input map from the websocket, checks if this map is a relevant
@@ -297,7 +284,6 @@
   (and (= "message" (:type msg))
        (contains? msg :text)))
 
-
 (defn edited-msg?
   "Given a raw input map checks if the message is an edit of a previous
   message."
@@ -305,13 +291,11 @@
   (and (= "message" (:type msg))
        (= "message_changed" (:subtype msg))))
 
-
 (defn clean-slack-msg
   [msg]
   (let [quotes (clojure.string/replace msg #"[\u201c\u201d]" "\"")
         newlines (clojure.string/replace quotes #"[\n\t\r]" " ")]
      newlines))
-
 
 (defn decode-message
   "Given a Slack message, returns a hashmap with some uniform names."
@@ -333,7 +317,6 @@
      :server  (:team m)
      :command :PRIVMSG ;; this is needed to trigger handlers for all public messages.
      }))
-
 
 (defn encode-message
   "Given a generic message map, turns it into a proper Slack message."
