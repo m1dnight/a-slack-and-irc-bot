@@ -79,3 +79,25 @@
 (defn negative?
   [x]
   (not (positive? x)))
+
+(defn destruct-raw-message
+  "Destructs an IRC message into a map."
+  [message]
+  (let [map
+        (zipmap
+         [:original :sender :command :channel :message]
+         (re-matches #"^(?:[:](\S+) )?(\S+)(?: (?!:)(.+?))?(?: [:](.+))?$" message))]
+    ;;TODO fix this! It doesnt seem to work properly.
+    ;; OTherwise, create an external functino to parse it out?
+    ;;If the nickname is found, put it in the map.
+    ;; (if-let [nick (re-matches #"(.+)!.*" (:sender map))]
+    ;;   (assoc map :nickname (nick 1))
+    ;;   map)
+    map))
+
+(defn shift-left
+  "Takes a list and shifts it one position the left."
+  [xs]
+  (let [len (count xs)
+        shift (take len (drop 1 (cycle xs)))]
+    shift))

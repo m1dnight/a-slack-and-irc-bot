@@ -6,6 +6,7 @@
 (ns clojo.core
   (:require [clojure.tools.logging       :as   log]
             [clojo.chatservices.slackrtm :as slack]
+            [clojo.chatservices.irc      :as   irc]
             [clojo.utils                 :as     u]
             [clojo.modules.modules       :as   mod]
             [clojo.modules.plugins.markov])
@@ -76,7 +77,8 @@
                                                    (slack/init-connection (slack/create-instance instance-cfg dispatcher)))
                                                ;; Create a plain old IRC connection.
                                                :irc
-                                               (log/info "Connecting IRC")
+                                               (do (log/info "Connecting IRC")
+                                                   (irc/init-connection (irc/create-instance instance-cfg dispatcher)))
                                                ;; Not defined.
                                                (log/error "Unknown instance!"))]
                             ;; Load all modules defined in the instance.
