@@ -14,7 +14,8 @@
             [clj-http.client       :as http]
             [gniazdo.core          :as   ws]
             [cheshire.core         :as   cs]
-            [clojo.utils           :as    u]))
+            [clojo.utils           :as    u]
+            [clojure.string        :as  str]))
 
 
 (declare from-config)
@@ -298,6 +299,14 @@
   [instance message]
   (let [chan (:outgoing  @instance)]
     (as/>!! chan message)))
+
+
+
+(defn send-message
+  "Sends a simple message to a channel or user."
+  [instance channel message]
+  (write-message instance (str/join " " (list "PRIVMSG" channel (str ":" message)))))
+
 
 (defn- process-incoming
   "Reads a message from the incoming socket and dispatches it."
