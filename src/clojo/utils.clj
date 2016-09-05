@@ -93,7 +93,7 @@
     ;; (if-let [nick (re-matches #"(.+)!.*" (:sender map))]
     ;;   (assoc map :nickname (nick 1))
     ;;   map)
-    map))
+    (update-in map [:command] keyword)))
 
 (defn shift-left
   "Takes a list and shifts it one position the left."

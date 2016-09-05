@@ -51,8 +51,11 @@
 (defn init-connection
   "Takes a bot instance and makes the actual connection to the Slack instance."
   [instance]
+  ;; First we connect the socket to the server.
   (connect instance)
+  ;; Registering happens by sending our nick and full name to the server.
   (register-server instance)
+  ;; Then we monitor. Meaning, we want to server to reply to our ping requests.
   (monitor-server instance)
   instance)
 
@@ -94,6 +97,7 @@
     :registered  nil
     :nickname    (:nickname cfg)
     :fullname    (:fullname cfg)
+    :channels    (:channels cfg)
     }))
 
 
@@ -168,7 +172,7 @@
   "Creates a new socket for this server instance, re-registers on the
   network and re-joins channels."
   [instance]
-  (log/error (:name @instance) "Reconnecting")
+  (log/info (:name @instance) "Reconnecting")
   ;; First clean up current connections, if any.
   (when (:socket @instance)
     (-> @instance :socket :cleanup))
@@ -193,12 +197,12 @@
     ;; Only reconnect if we are not connected or registered.
     (if-let [reply (u/read-with-timeout (:heartbeat @instance) 50000)]
       ;; If a pong is received, wait for a proper amount of time.
-      (do (log/trace (:name @instance) "Heartbeat - Received heartbeat")
+      (do (log/trace (:name @instance) "Received heartbeat")
           (Thread/sleep 5000))
       ;; If no pong is received, try a reconnect and keep trying until it
       ;; succeeds.
       (dosync
-       (log/trace (:name @instance) "Heartbeat - Did not receive heartbeat, reconnecting.")
+       (log/trace (:name @instance) "Did not receive heartbeat, reconnecting.")
        (reconnect-server instance)
        (while (not (:connected @instance))
          (Thread/sleep 2000) ;; Attempt connect every 2 seconds.
@@ -241,17 +245,18 @@
 (defn- join-channel
   "Joins a given channel list."
   [instance channel]
+  (log/info (:name @instance) "Joining " channel)
   (write-message instance (str "JOIN " channel)))
 
 
 (defn- join-channels
   "Joins the channels in the instance."
   [instance]
+  (log/info (:name @instance) "Joining channels!" (-> @instance :channels))
   (doall
    (map #(join-channel instance %)
         (-> @instance :channels)))
   instance)
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -260,8 +265,10 @@
 
 (defn- write-out
   "Writes a raw line to the socket."
-  [socket msg]
+  [instance socket msg]
+  (log/info (:name @instance) " >>> " msg)
   (doto (:out socket)
+
     (.println (str msg "\r"))
     (.flush)))
 
@@ -270,16 +277,19 @@
   "Reads a line from the socket and parses it into a message
   map. Returns nil if there has been an exception reading from the
   socket or a timeout."
-  [socket]
+  [instance socket]
   (try
     (let [line (.readLine (:in socket))]
       (when line
         (let [parsed (u/destruct-raw-message line)]
-          ;;(log/trace "PARSED :: " parsed)
+          (log/info (:name @instance) " <<< " line)
           parsed)))
     (catch Exception e
       nil)))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Socket Comm Functions
 
 (defn write-message
   "Puts a message in the channel of the bot. This will be then picked up by the
@@ -289,15 +299,10 @@
   (let [chan (:outgoing  @instance)]
     (as/>!! chan message)))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Socket Comm Functions
-
-
 (defn- process-incoming
   "Reads a message from the incoming socket and dispatches it."
   [instance]
-  (let [msg (read-in (:socket @instance))]
+  (let [msg (read-in instance (:socket @instance))]
     (when msg
       (handle-message msg instance))))
 
@@ -306,8 +311,7 @@
   "Processes a message from the outbound channel and writes it to the socket."
   [instance]
   (when-let [msg (u/read-with-timeout (:outgoing @instance) 5000)]
-    (log/trace (:name @instance) "OUT: " msg)
-    (write-out (:socket @instance) msg)))
+    (write-out instance (:socket @instance) msg)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -328,7 +332,7 @@
 (defn- handle-change-nick
   "Actions to take when a nickchange has been announced for the current instance."
   [instance nickname]
-  (log/info "### ::" "Changed nick to " nickname)
+  (log/info (:name instance) "Changed nick to " nickname)
   (dosync
    (alter instance #(update-in % [:info :nick] (fn [_] nickname)))
    (log/trace "Nickname changed to " nickname)))
@@ -355,7 +359,7 @@
   "Actions to take when the server sends an ERROR command. Probably
   means disconnecting."
   [instance]
-  (log/info "### ::" "Server is closing link. Exiting bot.")
+  (log/info (:name @instance) "Server is closing link. Exiting bot.")
   (dosync
    (alter instance
           #(assoc %
@@ -387,22 +391,18 @@
   "Function that dispatches over the type of message we receive."
   [msg instance]
   ;; Ignored messages.
-  ;; (when-not (contains? #{"372"} (:command msg))
-  ;;   (log/trace (:name @instance) " IN " (:original msg)))
   (cond
-    (= "NICK" (:command msg))
+    (= :NICK (:command msg))
     (handle-change-nick instance (:message msg))
     (re-find #"^PING" (:original msg))
     (handle-ping instance (:original msg))
-    (= "001" (:command msg))
+    (= :001 (:command msg))
     (handle-001 instance)
     (re-find #"^ERROR :Closing Link:" (:original msg))
     (handle-error instance)
-    (= "PONG"  (:command msg))
+    (= :PONG  (:command msg))
     (handle-pong instance msg)
-    (= "433" (:command msg))
+    (= :433 (:command msg))
     (handle-nick-taken instance)
     :else
-    nil
-;;    ((:dispatcher @instance) instance msg)
-    ))
+    ((:dispatcher @instance) instance msg)))
