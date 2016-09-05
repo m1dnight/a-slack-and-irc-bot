@@ -23,7 +23,7 @@
                  ;; Working with URLs - https://github.com/cemerick/url
                  [com.cemerick/url          "0.1.1"]
                  ;; Database dependencies.
-                 [org.xerial/sqlite-jdbc    "3.7.2"]                 
+                 [org.xerial/sqlite-jdbc    "3.7.2"]
                  [org.clojure/java.jdbc     "0.3.6"]
                  [clojure-tools             "1.1.3"]
                  [java-jdbc/dsl             "0.1.0"]
@@ -33,12 +33,12 @@
                  ;; Web scraping
                  [clj-soup/clojure-soup     "0.1.3"]
                  ]
-  
+
   :main ^:skip-aot clojo.core
   :target-path "target/%s"
-  :profiles  {:dev  
-              {:jvm-opts ["-Xmx1g" "-Dconfig.path=/Users/m1dnight/.clojo"]}
-              :deploy             
+  :profiles  {:dev
+              {:jvm-opts ["-Xmx1g" "-Dconfig.path=/home/christophe/.clojo"]}
+              :deploy
               {:jvm-opts ["-Xmx1g" "-Dconfig.path=/home/christophe/.clojo"]}
               :uberjar
               {:aot :all}})

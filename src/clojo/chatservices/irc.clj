@@ -22,13 +22,16 @@
 (declare monitor-server)
 (declare send-message)
 (declare process-outgoing)
+(declare process-incoming)
 (declare registered?)
 (declare write-message)
+(declare register-server)
 (declare register-user)
 (declare handle-message)
 (declare join-channels)
 (declare change-nick)
 (declare parse-command)
+(declare ident)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -49,6 +52,7 @@
   "Takes a bot instance and makes the actual connection to the Slack instance."
   [instance]
   (connect instance)
+  (register-server instance)
   (monitor-server instance)
   instance)
 
@@ -79,6 +83,7 @@
     :incoming    (as/chan)
     :outgoing    (as/chan)
     :heartbeat   (as/chan)
+    :monitor     nil
     :connected   false
     :socket      nil
     :id-gen      0
@@ -87,6 +92,8 @@
     :rcv-thread  nil
     :snd-thread  nil
     :registered  nil
+    :nickname    (:nickname cfg)
+    :fullname    (:fullname cfg)
     }))
 
 
@@ -98,6 +105,7 @@
   "Creates a socket for the given ip and port. Returns nil if
   impossible."
   [instance]
+  (log/trace (:name @instance) "Creating socket")
   (try
     (let [ip       (get-in @instance [:serverip])
           port     (get-in @instance [:serverport])
@@ -113,12 +121,14 @@
                       (.close out))]
       {:in in :out out :cleanup clean-fn})
     (catch java.net.SocketException e
+      (log/error (:name @instance) "Socket Exception.")
       nil)
     (catch java.net.UnknownHostException e
+      (log/error (:name @instance) "Unknownhost Exception.")
       nil)))
 
 
-(defn- connect-socket
+(defn- connect
   "Takes a server, attaches a socket to it and starts the read-in and
   -out loops."
   [instance]
@@ -135,7 +145,7 @@
     ;; loops to send and receive data.
     (let [receiver-thread
           (u/loop-thread-while
-           (fn [] (process-outgoing instance))
+           (fn [] (process-incoming instance))
            (fn [] (:connected @instance))
            (str (:name @instance) " - receiver thread"))
           sender-thread
@@ -153,6 +163,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Reconnecting And Monitor
 
+
 (defn- reconnect-server
   "Creates a new socket for this server instance, re-registers on the
   network and re-joins channels."
@@ -168,7 +179,8 @@
                   :socket     nil
                   :connected  false
                   :registered false)))
-  (connect-socket instance))
+  (connect instance))
+
 
 (defn- heartbeat
   "Send a ping message to the Slack instance. This function should be run in a
@@ -179,7 +191,7 @@
     (write-message instance (str "PING clojo"))
     ;; Await for the reply on the heartbeat channel.
     ;; Only reconnect if we are not connected or registered.
-    (if-let [reply (u/read-with-timeout (:heartbeat @instance) 5000)]
+    (if-let [reply (u/read-with-timeout (:heartbeat @instance) 50000)]
       ;; If a pong is received, wait for a proper amount of time.
       (do (log/trace (:name @instance) "Heartbeat - Received heartbeat")
           (Thread/sleep 5000))
@@ -217,6 +229,31 @@
   instance)
 
 
+(defn- register-user
+  "Register user on the network."
+  [instance]
+  (let [nick (-> @instance :nickname)
+        name (-> @instance :fullname)]
+    (write-message instance (str "NICK " nick))
+    (write-message instance (str "USER " nick " 0 * :" name))))
+
+
+(defn- join-channel
+  "Joins a given channel list."
+  [instance channel]
+  (write-message instance (str "JOIN " channel)))
+
+
+(defn- join-channels
+  "Joins the channels in the instance."
+  [instance]
+  (doall
+   (map #(join-channel instance %)
+        (-> @instance :channels)))
+  instance)
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Raw Socket Commands
 
@@ -237,12 +274,20 @@
   (try
     (let [line (.readLine (:in socket))]
       (when line
-        (log/trace "RAW IN :: " line)
         (let [parsed (u/destruct-raw-message line)]
-          (log/trace "PARSED :: " parsed)
+          ;;(log/trace "PARSED :: " parsed)
           parsed)))
     (catch Exception e
       nil)))
+
+
+(defn write-message
+  "Puts a message in the channel of the bot. This will be then picked up by the
+  loop in socket-write-loop. Expects *RAW* messages! Use abstractions provided
+  in commands.clj."
+  [instance message]
+  (let [chan (:outgoing  @instance)]
+    (as/>!! chan message)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -260,9 +305,20 @@
 (defn- process-outgoing
   "Processes a message from the outbound channel and writes it to the socket."
   [instance]
-  (when-let [msg (u/read-with-timeout (:out-chan @instance) 5000)]
+  (when-let [msg (u/read-with-timeout (:outgoing @instance) 5000)]
     (log/trace (:name @instance) "OUT: " msg)
     (write-out (:socket @instance) msg)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Helpers
+
+
+(defn- registered?
+  "Returns true if the current server insantance is registered on the
+  irc network."
+  [instance]
+  (:registered @instance))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -312,7 +368,7 @@
   reply to our ping."
   [instance msg]
   (let [pong-id (re-find #":.*" (:original msg))]
-    (as/>!! (:hb-chan @instance) (:original msg))))
+    (as/>!! (:heartbeat @instance) (:original msg))))
 
 
 (defn- handle-nick-taken
@@ -327,14 +383,12 @@
     (change-nick instance next)))
 
 
-
-
 (defn- handle-message
   "Function that dispatches over the type of message we receive."
   [msg instance]
   ;; Ignored messages.
-  (when-not (contains? #{"372"} (:command msg))
-    (log/trace (:name @instance) " IN " (:original msg)))
+  ;; (when-not (contains? #{"372"} (:command msg))
+  ;;   (log/trace (:name @instance) " IN " (:original msg)))
   (cond
     (= "NICK" (:command msg))
     (handle-change-nick instance (:message msg))
@@ -349,4 +403,6 @@
     (= "433" (:command msg))
     (handle-nick-taken instance)
     :else
-    ((:dispatcher @instance) instance msg)))
+    nil
+;;    ((:dispatcher @instance) instance msg)
+    ))
