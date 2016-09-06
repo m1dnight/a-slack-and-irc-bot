@@ -41,8 +41,7 @@
        :result (.getMessage e)})))
 
 
-
-(defn format-result
+(defn format-result-slack
   "Formats the output for Slack."
   [r]
   (if (:status r)
@@ -60,6 +59,30 @@
          "```")))
 
 
+(defn format-result-irc
+  "Formats the output for Slack."
+  [r]
+  (if (:status r)
+    (str (:form r)
+         " ==> "
+         (when-let [o (:output r)]
+           o)
+         (if (nil? (:result r))
+           "nil"
+           (:result r)))
+    (str (or (:form r) (:input r)) " ==> "
+         (or (:result r) "Unknown Error"))))
+
+(defn format-result
+  [instance evalres]
+  (let [type (:type @instance)
+        frmt
+        (if
+          (= :slack type)
+          format-result-slack
+          format-result-irc)]
+    (frmt evalres)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; MODULE DEFINITION ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -71,4 +94,4 @@
     "eval"
     (fn [instance args msg]
       (when-let [evalres (eval-expr args)]
-        (m/reply instance msg (format-result evalres))))))
+        (m/reply instance msg (format-result instance evalres))))))
