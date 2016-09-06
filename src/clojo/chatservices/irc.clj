@@ -199,7 +199,7 @@
     (if-let [reply (u/read-with-timeout (:heartbeat @instance) 50000)]
       ;; If a pong is received, wait for a proper amount of time.
       (do (log/trace (:name @instance) "Received heartbeat")
-          (Thread/sleep 5000))
+          (Thread/sleep 60000))
       ;; If no pong is received, try a reconnect and keep trying until it
       ;; succeeds.
       (dosync
