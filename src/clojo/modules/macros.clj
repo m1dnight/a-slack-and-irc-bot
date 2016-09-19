@@ -17,6 +17,10 @@
   [type handler]
   `{:kind :hook :hook ~type :handler ~handler})
 
+(defmacro defschedule
+  [interval handler]
+  `{:kind :cronjob :interval ~interval :handler ~handler})
+
 
 (defmacro defstorage
   [tablename & fields]
@@ -30,12 +34,26 @@
      (doseq [cmd# [~@cmds]]
        (let [knd#  (:kind cmd#)
              body# (:handler cmd#)]
-         (if (= :storage knd#)
+         (cond
+           (= :storage knd#)
            (body#)
+           (= :cronjob knd#)
+           (mod/add-cronjob instance# ~name cmd#)
+           :else
            (mod/add-handler instance# ~name ~rate cmd#))))))
 
 
 (defmacro reply
   [instance msg text]
   `((:send-fn (deref ~instance)) ~instance (:channel ~msg) ~text))
-                                 
+
+(defmacro broadcast
+  [instance text]
+  `(let [channels# (:joined (deref ~instance))]
+     (println channels#)
+     (println ~instance)
+     (doall
+      (map (fn [channel#]
+             (println channel#)
+             ((:send-fn (deref ~instance)) ~instance channel# ~text))
+           channels#))))

@@ -63,8 +63,7 @@
   "Formats the output for Slack."
   [r]
   (if (:status r)
-    (str (:form r)
-         " ==> "
+    (str " ==> "
          (when-let [o (:output r)]
            o)
          (if (nil? (:result r))

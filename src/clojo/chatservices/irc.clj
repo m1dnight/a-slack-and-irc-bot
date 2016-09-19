@@ -99,6 +99,8 @@
     :nickname    (:nickname cfg)
     :fullname    (:fullname cfg)
     :channels    (:channels cfg)
+    :cfg         cfg
+    :joined      []
     }))
 
 
@@ -267,9 +269,8 @@
 (defn- write-out
   "Writes a raw line to the socket."
   [instance socket msg]
-  (log/info (:name @instance) " >>> " msg)
+  (log/trace (:name @instance) " >>> " msg)
   (doto (:out socket)
-
     (.println (str msg "\r"))
     (.flush)))
 
@@ -283,7 +284,7 @@
     (let [line (.readLine (:in socket))]
       (when line
         (let [parsed (u/destruct-raw-message line)]
-          (log/info (:name @instance) " <<< " line)
+          (log/trace (:name @instance) " <<< " line)
           parsed)))
     (catch Exception e
       nil)))
@@ -396,6 +397,21 @@
     (change-nick instance next)))
 
 
+(defn- handle-join
+  "Server replied we joined a channel, add it to the instance. We
+  found a discrepancy between freenode and other ircd servers, where
+  the latter send it as a join message and the channel is then in the
+  channel field whereas freenode sends the channel as a text message,
+  so we have to manually parse it out."
+  [instance msg]
+  (let [channel (if (nil? (:message msg))
+                  (:channel msg)
+                  (:message msg))]
+    (dosync
+     (alter
+      instance #(update-in % [:joined] conj channel)))))
+
+
 (defn- handle-message
   "Function that dispatches over the type of message we receive."
   [msg instance]
@@ -413,5 +429,7 @@
     (handle-pong instance msg)
     (= :433 (:command msg))
     (handle-nick-taken instance)
+    (= :JOIN (:command msg))
+    (handle-join instance msg)
     :else
     ((:dispatcher @instance) instance msg)))

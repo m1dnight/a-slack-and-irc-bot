@@ -9,8 +9,10 @@
             [clojo.chatservices.irc      :as   irc]
             [clojo.utils                 :as     u]
             [clojo.modules.modules       :as   mod]
+            [overtone.at-at              :as  atat]
             [clojo.modules.plugins.markov])
   (:gen-class))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; HELPER ABSTRACTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -35,7 +37,6 @@
   )
 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; MESSAGE HANDLING ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -58,6 +59,64 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; COMMON FIELDS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(def scheduler (atat/mk-pool))
+
+(def second   1000)
+(def debug    (* 5 second))
+(def minute   (* 60 second))
+(def hour     (* 60 minute))
+(def day      (* 24 hour))
+(def week     (* 7 day))
+(def delay    60000)
+
+
+(defn insert-common-fields
+  "Attaches the common fields between instances"
+  [instance]
+  (dosync
+   (alter instance #(assoc %
+                           :scheduler scheduler
+                           :cron      {:debug    []
+                                       :minutely []
+                                       :hourly   []
+                                       :daily    []
+                                       :weekly   []}))))
+
+
+(defn exec-all-with
+  "Executes a list of functions"
+  [instance fs]
+  (doall
+   (map (fn [f]
+          (f instance))
+        fs)))
+
+
+(defn exec-crons
+  [instance interval]
+  (log/info (:name @instance) "Executing cronjobs: " interval)
+  (let [crons (interval (:cron @instance))]
+    (doall (map #(%) crons))))
+
+(defn register-cronjobs
+  "Reigstered all the known cronjobs with the scheduler with a fixed
+  delay to make sure they don't fire before the bot has joined
+  channels."
+  [instance]
+  (let [crons (:cron @instance)]
+    (log/info (:name @instance) "Cronjobs:" crons)
+    (atat/every debug  #(exec-crons instance :debug)    scheduler :initial-delay delay)
+    (atat/every minute #(exec-crons instance :minutely) scheduler :initial-delay delay)
+    (atat/every hour   #(exec-crons instance :hourly)   scheduler :initial-delay delay)
+    (atat/every day    #(exec-crons instance :daily)    scheduler :initial-delay delay)
+    (atat/every week   #(exec-crons instance :weekly)   scheduler :initial-delay delay)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; MAIN ENTRY POINT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -66,7 +125,7 @@
   "Reads the clojo.edn config file and then instantiates all the bots that are
   specified there."
   [& args]
-  ;(clojo.modules.plugins.markov/read-from-file "filtered.txt")
+                                        ;(clojo.modules.plugins.markov/read-from-file "filtered.txt")
   (let [clojo-cfg (u/read-config-sysprop "clojo.edn")
         instances (doall
                    (map (fn [instance]
@@ -82,9 +141,16 @@
                                                    (irc/init-connection (irc/create-instance instance-cfg dispatcher)))
                                                ;; Not defined.
                                                (log/error "Unknown instance!"))]
+                            ;; Attach scheduler to instances. This HAS
+                            ;; to happen before the modules are
+                            ;; loaded, because modules depend on it.
+                            (insert-common-fields instance)
                             ;; Load all modules defined in the instance.
                             (doseq [module (:modules instance-cfg)]
-                              (mod/load-module instance module))))
+                              (mod/load-module instance module))
+                            ;; Register the cronjobs
+                            (register-cronjobs instance)
+                            instance))
                         (:instances clojo-cfg)))]
     ;; Finally, wait for all the connections to die.
     ;; *This is blocking!*

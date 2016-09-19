@@ -73,12 +73,14 @@
     :id-gen      0
     :send-fn     send-message
     :ratelimits  {}
+    :cfg         cfg
+    :joined     []
     }))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Connection to Slack
 
-(defn- get-websocket-url 
+(defn- get-websocket-url
   "Connects to Slack and request a websocket url, based on a given token.."
   [instance]
   (log/debug (:name @instance) "Connecting - Getting WebSocket URL..")
@@ -110,12 +112,12 @@
                        (dosync (alter instance #(assoc % :connected false))))
           close-fn   (fn [& arg]
                        (log/error "Slack websocket closed." arg))
-          socket     (ws/connect 
-                      socket-url 
+          socket     (ws/connect
+                      socket-url
                       :on-receive rcv-fn
                       :on-error   error-fn
                       :on-close   close-fn)]
-      (dosync 
+      (dosync
        (alter instance #(assoc % :socket socket :connected true))))
     (log/error (:name @instance) " Dit not get WebSocket URL!")))
 

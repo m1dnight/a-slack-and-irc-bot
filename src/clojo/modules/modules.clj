@@ -5,7 +5,8 @@
 
 (ns clojo.modules.modules
   (:require [clojure.string        :as string]
-            [clojure.tools.logging :as log]))
+            [clojure.tools.logging :as    log]
+            [overtone.at-at        :as   atat]))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -53,6 +54,23 @@
               (update-in instance
                          [kind submap]
                          conj {:name name :f handler :rate rate}))))))
+
+
+(defn add-cronjob
+  "Adds a cronjob to the instance. This function should only be used
+  by the macros."
+  [instance name command]
+  (let [handler       #((:handler command) instance)
+        interval      (:interval command)]
+    (dosync
+     (alter instance
+            (fn [instance]
+              (let [allowed (keys (:cron instance))]
+                ;; Check if the interval is allowed (i.e., if it is a
+                ;; key in the cron map).
+                (if (some #{interval} allowed)
+                  (update-in instance [:cron interval] #(conj % handler))
+                  (log/error (:name instance) "Invalid interval in cronjob!"))))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

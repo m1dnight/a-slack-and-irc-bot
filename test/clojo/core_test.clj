@@ -4,10 +4,16 @@
 ; Date:    May 16, 2016
 
 (ns clojo.core-test
+  (:use     [clojure.algo.monads]
+            [korma.core         ]
+            [korma.db           ])
+  (:require [clojo.modules.macros  :as   m]
+            [clojo.modules.modules :as mod]
+            [clojo.db              :as  db]
+            [clojure.tools.logging :as log])
   (:require [clojure.test :refer :all]
             [clojo.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
-
+(defn foo
+  [x]
+  x)
