@@ -32,20 +32,35 @@
                     :inst     (str (:name @instance))})))))
 
 
+(defn first-entry?
+  [instance feed]
+  (empty?
+   (select rss
+           (where {:feedname feed
+                   :inst     (str (:name @instance))}))))
+
+
 (defn remember-entry
   "Takes a feed and an entry and stores the hash of that entry in the
   database."
   [instance feed entry]
-  (update rss
-          (set-fields {:last (str (hash entry))})
-          (where {:feedname feed
-                  :inst     (str (:name @instance))})))
+  (if (first-entry? instance feed)
+    (insert rss
+            (values {:feedname feed
+                     :inst (str (:name @instance))
+                     :last (str (hash entry))}))
+    (update rss
+            (set-fields {:last (str (hash entry))})
+            (where {:feedname feed
+                    :inst     (str (:name @instance))}))))
 
 
 (defn is-last?
   "Takes a feed and an entry and checks if that is the last seen entry."
   [instance feed entry]
   (let [last-seen (last-entry instance feed)]
+    (println "Last entry: " last-seen)
+    (println "Online:     " (str (hash entry)))
     (= (str (hash entry)) last-seen)))
 
 
