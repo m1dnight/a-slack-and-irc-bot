@@ -15,5 +15,6 @@
             [clojo.core :refer :all]))
 
 (defn foo
+
   [x]
   x)

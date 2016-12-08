@@ -40,10 +40,10 @@
   :main ^:skip-aot clojo.core
   :target-path "target/%s"
   :profiles  {:dev
-              {:jvm-opts ["-Xmx1g" "-Dconfig.path=/home/christophe/.clojo"]}
+              {:jvm-opts ["-Xmx1g" "-Dconfig.path=/Users/m1dnight/.clojo"]}
               :deploy
               {:jvm-opts ["-Xmx1g" "-Dconfig.path=/home/christophe/.clojo"]}
-              :osx
+              :linux
               {:jvm-opts ["-Xmx1g" "-Dconfig.path=/Users/m1dnight/.clojo"]}
               :uberjar
               {:aot :all}})
