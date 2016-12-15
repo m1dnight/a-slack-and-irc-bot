@@ -286,4 +286,4 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 
-logs/
+logs/.idea
